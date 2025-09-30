@@ -454,9 +454,12 @@ export const ComponentLibrary: React.FC = () => {
           return (
             <div key={cat} className="mb-6">
               <div className="text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">{CATEGORY_LABELS[cat] || cat}</div>
-              {comps.map((comp) => (
-                <ComponentPreviewItem key={comp.type} comp={comp} />
-              ))}
+              <div className="flex flex-wrap gap-3 mb-2">
+                {comps.map((comp) => (
+                  <ComponentPreviewItem key={comp.type} comp={comp} />
+                ))}
+              </div>
+
             </div>
           );
         })}
