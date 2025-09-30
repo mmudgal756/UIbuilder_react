@@ -312,7 +312,7 @@ export const PropertiesPanel: React.FC = () => {
   };
 
   return (
-    <div className="p-4 h-full overflow-y-auto">
+  <div className="p-4 h-full overflow-y-auto thin-scrollbar">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold flex items-center gap-2">
           <Settings className="w-5 h-5" />
