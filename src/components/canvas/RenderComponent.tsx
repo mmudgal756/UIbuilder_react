@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentData } from '../../types';
-import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Text } from '../ui/Text';
 import { Image } from '../ui/Image';
@@ -28,13 +27,11 @@ import { Calendar } from '../ui/Calendar';
 import { Map } from '../ui/Map';
 import { CodeBlock } from '../ui/CodeBlock';
 import { Markdown } from '../ui/Markdown';
-import { Chart } from '../ui/Chart';
 import { Slider } from '../ui/Slider';
 import { DatePicker } from '../ui/DatePicker';
 import { FileUpload } from '../ui/FileUpload';
 import { Radio } from '../ui/Radio';
-import { Switch } from '../ui/Switch';
-import { Divider } from '../ui/Divider';
+import Button from '../ui/Button/Button';
 
 interface RenderComponentProps {
   component: ComponentData;
@@ -82,8 +79,8 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({
     case 'radio':
       return <Radio component={component} isPreview={isPreview} />;
 
-    case 'switch':
-      return <Switch component={component} isPreview={isPreview} />;
+    // case 'switch':
+    //   return <Switch component={component} isPreview={isPreview} />;
 
     case 'slider':
       return <Slider component={component} isPreview={isPreview} />;
@@ -94,8 +91,8 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({
     case 'fileupload':
       return <FileUpload component={component} isPreview={isPreview} />;
 
-    case 'divider':
-      return <Divider component={component} isPreview={isPreview} />;
+    // case 'divider':
+    //   return <Divider component={component} isPreview={isPreview} />;
 
     case 'video':
       return <Video component={component} isPreview={isPreview} />;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ButtonProps } from './Button';
 import BindingEditor from '../BindingEditor';
 import ActionBuilder, { ActionDescriptor } from '../ActionBuilder';
+import { ButtonProps } from '../../../types/ui/Button';
 
 interface ButtonPropertiesPanelProps {
   value: ButtonProps & {
@@ -21,17 +21,17 @@ export const ButtonPropertiesPanel: React.FC<ButtonPropertiesPanelProps> = ({ va
       <div>
         <div className="font-semibold mb-2">Content</div>
         <label className="block mb-1 text-sm">Label
-          <BindingEditor value={value.label} onChange={v => onChange({ ...value, label: v })} />
+          <BindingEditor value={typeof value.label === 'string' ? value.label : ''} onChange={v => onChange({ ...value, label: v })} />
         </label>
         <label className="block mb-1 text-sm">Button Variant
-          <select className="w-full p-1 rounded bg-gray-800 border border-gray-700" value={value.variant} onChange={e => onChange({ ...value, variant: e.target.value as ButtonProps['variant'] })}>
+          <select className="w-full p-1 rounded bg-gray-800 border border-gray-700" value={typeof value.variant === 'string' ? value.variant : ''} onChange={e => onChange({ ...value, variant: e.target.value as ButtonProps['variant'] })}>
             <option value="primary">Primary</option>
             <option value="secondary">Secondary</option>
             <option value="tertiary">Tertiary</option>
           </select>
         </label>
         <label className="block mb-1 text-sm">Size
-          <select className="w-full p-1 rounded bg-gray-800 border border-gray-700" value={value.size} onChange={e => onChange({ ...value, size: e.target.value as ButtonProps['size'] })}>
+          <select className="w-full p-1 rounded bg-gray-800 border border-gray-700" value={typeof value.size === 'string' ? value.size : ''} onChange={e => onChange({ ...value, size: e.target.value as ButtonProps['size'] })}>
             <option value="sm">Small</option>
             <option value="md">Medium</option>
             <option value="lg">Large</option>

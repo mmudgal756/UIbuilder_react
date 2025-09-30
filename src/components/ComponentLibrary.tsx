@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDrag } from 'react-dnd';
 // Import all UI components for preview from their folders
-import { Button } from './ui/Button/Button';
 import { Text } from './ui/Text/Text';
 import { Input } from './ui/Input/Input';
 import { Card } from './ui/Card/Card';
@@ -24,6 +23,7 @@ import { Pagination } from './ui/Pagination/Pagination';
 import { List } from './ui/List/List';
 import { Map } from './ui/Map/Map';
 import { Timeline } from './ui/Timeline/Timeline';
+import Button from './ui/Button/Button';
 // ...add more imports as you add more UI tools
 
 // Component meta for rendering and drag info
