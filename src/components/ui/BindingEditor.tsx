@@ -19,7 +19,6 @@ const BindingEditor: React.FC<BindingEditorProps> = ({ value = '', onChange }) =
         <button className="px-3 py-1 bg-gray-600 rounded" onClick={() => onChange(text)}>Apply</button>
         <button className="px-3 py-1 bg-gray-800 rounded" onClick={() => { setText(''); onChange(''); }}>Clear</button>
       </div>
-      <div className="text-xs text-gray-400">Bindings should be wrapped in {'{{...}}'}</div>
     </div>
   );
 };

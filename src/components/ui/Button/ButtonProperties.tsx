@@ -22,13 +22,12 @@ export const ButtonPropertiesPanel: React.FC<ButtonPropertiesPanelProps> = ({ va
         <div className="font-semibold mb-2">Content</div>
         <label className="block mb-1 text-sm">Label
           <BindingEditor value={value.label} onChange={v => onChange({ ...value, label: v })} />
-          <span className="block text-xs text-gray-400">Supports dynamic binding (e.g. {'{{user.action}}'})</span>
         </label>
-        <label className="block mb-1 text-sm">Variant
+        <label className="block mb-1 text-sm">Button Variant
           <select className="w-full p-1 rounded bg-gray-800 border border-gray-700" value={value.variant} onChange={e => onChange({ ...value, variant: e.target.value as ButtonProps['variant'] })}>
             <option value="primary">Primary</option>
             <option value="secondary">Secondary</option>
-            <option value="danger">Danger</option>
+            <option value="tertiary">Tertiary</option>
           </select>
         </label>
         <label className="block mb-1 text-sm">Size

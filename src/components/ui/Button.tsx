@@ -7,8 +7,8 @@ export interface ButtonProps extends BaseProps {
   isPreview?: boolean;
   onClick?: () => void; // optional click handler passed by host/runtime
   text?: ValueOrBinding<string>;
-  variant?: ValueOrBinding<'primary'|'secondary'|'ghost'|'danger'|'link'|string>;
-  size?: ValueOrBinding<'xs'|'sm'|'md'|'lg'|string>;
+  variant?: ValueOrBinding<'primary' | 'secondary' | 'ghost' | 'danger' | 'link' | string>;
+  size?: ValueOrBinding<'xs' | 'sm' | 'md' | 'lg' | string>;
 }
 
 /**
@@ -27,35 +27,46 @@ function readValue<T = any>(v?: ValueOrBinding<T> | T): T | undefined {
 }
 
 /**
- * Map variant -> classes (tailwind-like; adjust to your CSS)
- */
-const variantClasses: Record<string, string> = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-500',
-  secondary: 'bg-gray-600 text-white hover:bg-gray-500',
-  ghost: 'bg-transparent text-gray-200 hover:bg-gray-800',
-  danger: 'bg-red-600 text-white hover:bg-red-500',
-  link: 'bg-transparent text-blue-500 underline hover:opacity-80',
-};
-
-/**
  * Map size -> padding/text classes
  */
 const sizeClasses: Record<string, string> = {
-  xs: 'text-xs px-2 py-1',
-  sm: 'text-sm px-3 py-1.5',
-  md: 'text-base px-4 py-2',
-  lg: 'text-lg px-5 py-3',
+  xs: 'text-xs px-2 py-1.5',
+  sm: 'text-sm px-3 py-2',
+  md: 'text-base px-4 py-3',
+  lg: 'text-lg px-5 py-4',
 };
 
 export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, onClick }) => {
   // read props from component.props (fallbacks)
   const props = (component.props || {}) as Record<string, any>;
 
+  // Dynamic style logic for variants
+  const selectedColor = component.style?.backgroundColor;
+  let style: React.CSSProperties = {};
+  if (props.variant === 'primary') {
+    style = {
+      background: selectedColor,
+      color: '#fff',
+      border: `1px solid ${selectedColor}`,
+    };
+  } else if (props.variant === 'secondary') {
+    style = {
+      background: '#fff',
+      color: selectedColor,
+      border: `1px solid ${selectedColor}`,
+    };
+  } else if (props.variant === 'tertiary') {
+    style = {
+      background: '#fff',
+      color: selectedColor,
+      border: '1px solid #fff',
+    };
+  }
   const visibleProp = readValue<boolean>(props.visible);
   if (visibleProp === false) return null; // respect visibility
 
-  const textProp = readValue<string>(props.text) ?? 'Button';
-  const variantProp = String(readValue<string>(props.variant) ?? 'primary');
+  const textProp = readValue<string>(props.label) ?? 'Button';
+  //const variantProp = String(readValue<string>(props.variant) ?? 'primary');
   const sizeProp = String(readValue<string>(props.size) ?? 'md');
   const disabledProp = readValue<boolean>(props.disabled) ?? false;
   const loadingProp = readValue<boolean>(props.loading) ?? false;
@@ -76,7 +87,6 @@ export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, on
   };
 
   // Determine classes based on variant/size
-  const vClass = variantClasses[variantProp] || variantProp || '';
   const sClass = sizeClasses[sizeProp] || '';
 
   // final disabled state: if explicitly disabled OR in non-preview and not enabled for editing
@@ -124,7 +134,6 @@ export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, on
     'flex',
     'items-center',
     'justify-center',
-    vClass,
     sClass,
     finalDisabled ? 'opacity-50 cursor-not-allowed' : '',
     (component.style && component.style.display === 'block') ? 'w-full' : '',
@@ -132,7 +141,7 @@ export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, on
 
   return (
     <button
-      style={baseStyle}
+      style={{ ...baseStyle, ...style }}
       className={className}
       disabled={finalDisabled}
       onClick={handleClick}
