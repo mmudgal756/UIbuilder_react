@@ -10,16 +10,20 @@ import { useEffect, useState } from 'react';
 export const Canvas: React.FC = () => {
   const canvasRef = useRef<HTMLDivElement | null>(null) as MutableRefObject<HTMLDivElement | null>;
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; component: ComponentData } | null>(null);
-  const { 
-    components, 
-    addComponent, 
-    selectComponent, 
-    selectedComponent, 
-    canvasScale, 
-    snapToGrid, 
+  const {
+    pages,
+    currentPageId,
+    addComponent,
+    selectComponent,
+    selectedComponent,
+    canvasScale,
+    snapToGrid,
     gridSize,
     updateComponent
   } = useAppStore();
+
+  // Get components for the current page
+  const components = pages.find(p => p.id === currentPageId)?.components || [];
 
   type DropItem = {
     id?: string;

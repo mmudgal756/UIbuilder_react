@@ -8,13 +8,20 @@ interface PreviewModalProps {
 }
 
 export const PreviewModal: React.FC<PreviewModalProps> = ({ onClose }) => {
-  const { components } = useAppStore();
+  const { pages, currentPageId } = useAppStore();
+  const currentPage = pages.find(p => p.id === currentPageId);
+  const components = currentPage?.components || [];
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg w-full h-full max-w-6xl max-h-4xl overflow-hidden">
         <div className="bg-gray-100 border-b p-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">Preview</h2>
+          <div className="flex items-center gap-4">
+            <h2 className="text-lg font-semibold text-gray-900">Preview</h2>
+            {currentPage && (
+              <span className="text-sm text-gray-600">Page: {currentPage.name}</span>
+            )}
+          </div>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-200 rounded"

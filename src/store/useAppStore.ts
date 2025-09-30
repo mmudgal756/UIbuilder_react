@@ -34,7 +34,6 @@ interface AppState {
   rightPanelTab: 'properties' | 'data' | 'logs' | 'settings';
   
   // Canvas State
-  components: ComponentData[];
   copiedComponent: ComponentData | null;
   selectedComponent: ComponentData | null;
   draggedComponent: ComponentType | null;
@@ -139,7 +138,7 @@ export const useAppStore = create<AppState>()(
       rightPanelTab: 'properties',
       
       // Canvas State
-      components: [],
+  // removed global components array
       copiedComponent: null,
       selectedComponent: null,
       draggedComponent: null,
@@ -151,7 +150,7 @@ export const useAppStore = create<AppState>()(
       pages: [{
         id: 'page-1',
         name: 'Home',
-        components: [],
+  components: [],
         apis: [],
         queries: [],
         route: '/',
@@ -206,20 +205,30 @@ export const useAppStore = create<AppState>()(
       // Component Actions
       addComponent: (component) =>
         set((state) => ({
-          components: [...state.components, component],
+          pages: state.pages.map(page =>
+            page.id === state.currentPageId
+              ? { ...page, components: [...page.components, component] }
+              : page
+          ),
         })),
 
       copyComponent: (id) =>
         set((state) => {
-          const comp = state.components.find(c => c.id === id) || null;
+          const currentPage = state.pages.find(p => p.id === state.currentPageId);
+          const comp = currentPage?.components.find(c => c.id === id) || null;
           return { copiedComponent: comp };
         }),
 
       cutComponent: (id) =>
         set((state) => {
-          const comp = state.components.find(c => c.id === id) || null;
+          const currentPage = state.pages.find(p => p.id === state.currentPageId);
+          const comp = currentPage?.components.find(c => c.id === id) || null;
           return {
-            components: state.components.filter(c => c.id !== id),
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.filter(c => c.id !== id) }
+                : page
+            ),
             copiedComponent: comp,
             selectedComponent: state.selectedComponent?.id === id ? null : state.selectedComponent,
           };
@@ -229,52 +238,83 @@ export const useAppStore = create<AppState>()(
         set((state) => {
           const copied = state.copiedComponent;
           if (!copied) return state;
-          const newComponent = { ...copied, id: `${copied.id}-paste-${Date.now()}`, x, y };
-          return { components: [...state.components, newComponent], copiedComponent: copied };
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: [...page.components, { ...copied, id: `${copied.id}-paste-${Date.now()}`, x, y }] }
+                : page
+            ),
+            copiedComponent: copied,
+          };
         }),
 
       renameComponent: (id, newName) =>
-        set((state) => ({
-          components: state.components.map((comp) => comp.id === id ? { ...comp, props: { ...(comp.props || {}), name: newName, label: newName } } : comp),
-          selectedComponent: state.selectedComponent?.id === id ? { ...state.selectedComponent, props: { ...(state.selectedComponent.props || {}), name: newName, label: newName } } : state.selectedComponent,
-        })),
+        set((state) => {
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.map(comp => comp.id === id ? { ...comp, props: { ...(comp.props || {}), name: newName, label: newName } } : comp) }
+                : page
+            ),
+            selectedComponent: state.selectedComponent?.id === id ? { ...state.selectedComponent, props: { ...(state.selectedComponent.props || {}), name: newName, label: newName } } : state.selectedComponent,
+          };
+        }),
 
       resetComponentState: (id) =>
-        set((state) => ({
-          components: state.components.map((comp) => comp.id === id ? { ...comp, props: {}, style: {} } : comp),
-          selectedComponent: state.selectedComponent?.id === id ? { ...state.selectedComponent, props: {}, style: {} } : state.selectedComponent,
-        })),
+        set((state) => {
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.map(comp => comp.id === id ? { ...comp, props: {}, style: {} } : comp) }
+                : page
+            ),
+            selectedComponent: state.selectedComponent?.id === id ? { ...state.selectedComponent, props: {}, style: {} } : state.selectedComponent,
+          };
+        }),
 
       updateComponent: (id, updates) =>
-        set((state) => ({
-          components: state.components.map((comp) =>
-            comp.id === id ? { ...comp, ...updates } : comp
-          ),
-          selectedComponent:
-            state.selectedComponent?.id === id
-              ? { ...state.selectedComponent, ...updates }
-              : state.selectedComponent,
-        })),
+        set((state) => {
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.map(comp => comp.id === id ? { ...comp, ...updates } : comp) }
+                : page
+            ),
+            selectedComponent:
+              state.selectedComponent?.id === id
+                ? { ...state.selectedComponent, ...updates }
+                : state.selectedComponent,
+          };
+        }),
 
       deleteComponent: (id) =>
-        set((state) => ({
-          components: state.components.filter((comp) => comp.id !== id),
-          selectedComponent:
-            state.selectedComponent?.id === id ? null : state.selectedComponent,
-        })),
+        set((state) => {
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.filter(comp => comp.id !== id) }
+                : page
+            ),
+            selectedComponent:
+              state.selectedComponent?.id === id ? null : state.selectedComponent,
+          };
+        }),
 
       duplicateComponent: (id) =>
         set((state) => {
-          const component = state.components.find(c => c.id === id);
+          const currentPage = state.pages.find(p => p.id === state.currentPageId);
+          const component = currentPage?.components.find(c => c.id === id);
           if (!component) return state;
-          
           const newComponent = {
             ...component,
             id: `${component.id}-copy-${Date.now()}`, x: component.x + 20, y: component.y + 20
           };
-
           return {
-            components: [...state.components, newComponent]
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: [...page.components, newComponent] }
+                : page
+            ),
           };
         }),
 
@@ -294,23 +334,35 @@ export const useAppStore = create<AppState>()(
         })),
 
       moveComponent: (id, x, y) =>
-        set((state) => ({
-          components: state.components.map((comp) =>
-            comp.id === id ? { ...comp, x, y } : comp
-          ),
-        })),
+        set((state) => {
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.map(comp => comp.id === id ? { ...comp, x, y } : comp) }
+                : page
+            ),
+          };
+        }),
 
       resizeComponent: (id, width, height) =>
-        set((state) => ({
-          components: state.components.map((comp) =>
-            comp.id === id ? { ...comp, width, height } : comp
-          ),
-        })),
+        set((state) => {
+          return {
+            pages: state.pages.map(page =>
+              page.id === state.currentPageId
+                ? { ...page, components: page.components.map(comp => comp.id === id ? { ...comp, width, height } : comp) }
+                : page
+            ),
+          };
+        }),
       
       // Page Actions
       addPage: (page) =>
         set((state) => ({
-          pages: [...state.pages, page],
+          pages: [...state.pages, { ...page, components: [] }],
+          // Optionally, set currentPageId to the new page
+          currentPageId: page.id,
+          // Optionally, clear canvas components for new page
+          components: [],
         })),
       
       updatePage: (id, updates) =>
@@ -342,7 +394,15 @@ export const useAppStore = create<AppState>()(
         }),
       
       setCurrentPage: (id) =>
-        set({ currentPageId: id }),
+        set((state) => {
+          const page = state.pages.find(p => p.id === id);
+          return {
+            currentPageId: id,
+            selectedComponent: null,
+            // Optionally, clear copiedComponent when switching pages
+            // copiedComponent: null,
+          };
+        }),
       
       // API Actions
       addApi: (api) =>
@@ -563,11 +623,11 @@ export const useAppStore = create<AppState>()(
         if (!currentPage) return;
         
         // Generate HTML
-        const html = `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>${currentPage.seo?.title || currentPage.name}</title>\n    <meta name="description" content="${currentPage.seo?.description || ''}">\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <div id="app">\n${state.components.map(component => `        <div class="component component-${component.type}" style="position: absolute; left: ${component.x}px; top: ${component.y}px; width: ${component.width}px; height: ${component.height}px;">\n            ${generateComponentHTML(component)}\n        </div>`).join('\\n')}\n    </div>\n    <script src="script.js"></script>\n</body>\n</html>`;
+  const html = `<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>${currentPage.seo?.title || currentPage.name}</title>\n    <meta name="description" content="${currentPage.seo?.description || ''}">\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <div id="app">\n${currentPage.components.map(component => `        <div class="component component-${component.type}" style="position: absolute; left: ${component.x}px; top: ${component.y}px; width: ${component.width}px; height: ${component.height}px;">\n            ${generateComponentHTML(component)}\n        </div>`).join('\\n')}\n    </div>\n    <script src="script.js"></script>\n</body>\n</html>`;
 
         // Generate CSS
-        const css = `/* Generated CSS */\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    font-family: ${state.settings.theme.fonts.primary};\n    background-color: ${state.settings.theme.colors.background};\n    color: ${state.settings.theme.colors.text};\n}\n\n#app {\n    position: relative;\n    min-height: 100vh;\n}\n\n.component {\n    position: absolute;\n}\n\n${state.components.map(component => generateComponentCSS(component)).join('\\n')}`;      // Generate JavaScript
-        const javascript = `// Generated JavaScript\nclass AppBuilder {\n    constructor() {\n        this.state = ${JSON.stringify(state.globalState, null, 4)};\n        this.init();\n    }\n    \n    init() {\n        this.bindEvents();\n        this.loadData();\n    }\n    \n    bindEvents() {\n        // Event bindings for components\n${state.components.filter(c => c.events).map(component => 
+  const css = `/* Generated CSS */\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n}\n\nbody {\n    font-family: ${state.settings.theme.fonts.primary};\n    background-color: ${state.settings.theme.colors.background};\n    color: ${state.settings.theme.colors.text};\n}\n\n#app {\n    position: relative;\n    min-height: 100vh;\n}\n\n.component {\n    position: absolute;\n}\n\n${currentPage.components.map(component => generateComponentCSS(component)).join('\\n')}`;      // Generate JavaScript
+        const javascript = `// Generated JavaScript\nclass AppBuilder {\n    constructor() {\n        this.state = ${JSON.stringify(state.globalState, null, 4)};\n        this.init();\n    }\n    \n    init() {\n        this.bindEvents();\n        this.loadData();\n    }\n    \n    bindEvents() {\n        // Event bindings for components\n${currentPage.components.filter(c => c.events).map(component => 
     Object.entries(component.events || {}).map(([event, handler]) => 
         `        document.querySelector('[data-component-id="${component.id}"]')?.addEventListener('${event}', ${handler});`
     ).join('\\n')
@@ -599,7 +659,16 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'app-builder-components', // name of the item in the storage (must be unique)
-      partialize: (state) => ({ components: state.components }), // only store the components slice
+      // Store per-page components and current page name
+      partialize: (state) => ({
+        pages: state.pages.map(page => ({
+          id: page.id,
+          name: page.name,
+          components: page.components,
+        })),
+        currentPageId: state.currentPageId,
+        currentPageName: (state.pages.find(p => p.id === state.currentPageId)?.name) || '',
+      }),
     }
   )
 );
