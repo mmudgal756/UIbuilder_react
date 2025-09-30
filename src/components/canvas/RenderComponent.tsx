@@ -50,7 +50,7 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({
 
   switch (component.type) {
     case 'button':
-      return <Button component={component} isPreview={isPreview} />;
+      return <Button id={component.id} component={component} isPreview={isPreview} />;
     
     case 'input':
       return <Input component={component} isPreview={isPreview} />;
