@@ -333,13 +333,13 @@ export const PropertiesPanel: React.FC = () => {
 
       <div className="space-y-6">
         {/* Component Info */}
-        <div className="bg-gray-750 p-3 rounded">
+        <div className="bg-gray-750 rounded">
           <div className="text-sm text-gray-400 mb-1">Component Type</div>
           <div className="font-medium capitalize">{selectedComponent.type}</div>
         </div>
 
         {/* Position & Size */}
-        <div className="bg-gray-750 p-3 rounded">
+        <div className="bg-gray-750 rounded">
           <div className="text-sm font-medium mb-3">Layout</div>
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -382,13 +382,13 @@ export const PropertiesPanel: React.FC = () => {
         </div>
 
         {/* Properties */}
-        <div className="bg-gray-750 p-3 rounded">
+        <div className="bg-gray-750 rounded">
           <div className="text-sm font-medium mb-3">Properties</div>
           {renderPropsEditor()}
         </div>
 
         {/* Styling */}
-        <div className="bg-gray-750 p-3 rounded">
+        <div className="bg-gray-750 rounded">
           <div className="text-sm font-medium mb-3">Styling</div>
           <div className="space-y-3">
             <div>

@@ -205,7 +205,11 @@ export const ApiBuilder: React.FC = () => {
                       type="text"
                       value={selectedApi.authentication.token || ''}
                       onChange={(e) => updateApi(selectedApi.id, {
-                        authentication: { ...selectedApi.authentication, token: e.target.value }
+                        authentication: {
+                          ...selectedApi.authentication,
+                          type: 'bearer', // Ensure type is always set
+                          token: e.target.value
+                        }
                       })}
                       placeholder="Bearer token"
                       className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white text-sm"

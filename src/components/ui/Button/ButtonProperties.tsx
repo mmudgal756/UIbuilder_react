@@ -1,7 +1,7 @@
 import React from 'react';
 import BindingEditor from '../BindingEditor';
 import ActionBuilder, { ActionDescriptor } from '../ActionBuilder';
-import { ButtonProps } from '../../../types/ui/Button';
+import { ButtonProps } from './Button';
 
 interface ButtonPropertiesPanelProps {
   value: ButtonProps & {
