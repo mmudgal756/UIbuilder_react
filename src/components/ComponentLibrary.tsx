@@ -295,8 +295,6 @@ const COMPONENTS = [
   // Removed unused CATEGORIES
 
 // Use 'any' for comp and previewProps to avoid type errors for dynamic heterogeneous components
-const CARD_HEIGHT = 44;
-const CARD_WIDTH = 220;
 // --- Type Definitions ---
 export type ComponentMeta = {
   type: string;
