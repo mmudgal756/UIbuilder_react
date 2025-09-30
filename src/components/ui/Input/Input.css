@@ -1,0 +1,16 @@
+/* Input Component CSS */
+.custom-input {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.custom-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px #6366f133;
+}
+.custom-input.error {
+  border-color: #ef4444;
+}

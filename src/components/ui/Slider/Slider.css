@@ -1,0 +1,15 @@
+/* Slider Component CSS */
+.custom-slider-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.custom-slider {
+  width: 100%;
+  accent-color: #6366f1;
+  height: 4px;
+  border-radius: 2px;
+  background: #e5e7eb;
+  outline: none;
+  transition: accent-color 0.2s;
+}

@@ -1,0 +1,23 @@
+/* Badge Component CSS */
+.custom-badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border-radius: 1em;
+  background: #6366f1;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.custom-badge.success {
+  background: #22c55e;
+}
+.custom-badge.error {
+  background: #ef4444;
+}
+.custom-badge.warning {
+  background: #f59e42;
+}
+.custom-badge.info {
+  background: #3b82f6;
+}

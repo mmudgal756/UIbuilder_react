@@ -1,0 +1,32 @@
+/* Timeline Component CSS */
+.custom-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.custom-timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #6366f1;
+}
+.custom-timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 40px;
+}
+.custom-timeline-dot {
+  position: absolute;
+  left: 8px;
+  top: 0.5rem;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid #6366f1;
+  border-radius: 50%;
+  z-index: 1;
+}

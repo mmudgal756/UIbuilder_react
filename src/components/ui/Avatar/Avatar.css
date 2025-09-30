@@ -1,0 +1,20 @@
+/* Avatar Component CSS */
+.custom-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e7ff;
+  color: #6366f1;
+  font-weight: 700;
+  font-size: 1.25rem;
+  overflow: hidden;
+}
+.custom-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

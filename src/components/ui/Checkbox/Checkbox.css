@@ -1,0 +1,41 @@
+/* Checkbox Component CSS */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+.custom-checkbox .checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6366f1;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  background: #fff;
+  position: relative;
+  transition: background 0.2s, border 0.2s;
+}
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+.custom-checkbox .checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+  display: block;
+}
+.custom-checkbox .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

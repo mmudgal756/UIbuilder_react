@@ -1,0 +1,16 @@
+/* Card Component CSS */
+.custom-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 12px rgba(60,60,60,0.08);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: box-shadow 0.2s;
+  border: 1px solid #e5e7eb;
+}
+.custom-card.hoverable:hover {
+  box-shadow: 0 6px 24px rgba(60,60,60,0.18);
+}
+.custom-card.outlined {
+  border: 2px solid #6366f1;
+}

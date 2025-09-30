@@ -1,0 +1,40 @@
+/* Radio Component CSS */
+.custom-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.custom-radio input[type="radio"] {
+  display: none;
+}
+.custom-radio .radiomark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6366f1;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  background: #fff;
+  position: relative;
+  transition: border 0.2s;
+}
+.custom-radio input[type="radio"]:checked + .radiomark {
+  border-color: #6366f1;
+  background: #6366f1;
+}
+.custom-radio .radiomark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.custom-radio input[type="radio"]:checked + .radiomark:after {
+  display: block;
+}
+.custom-radio .radiomark:after {
+  left: 6px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+}

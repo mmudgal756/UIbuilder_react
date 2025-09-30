@@ -1,0 +1,23 @@
+/* Modal Component CSS */
+.custom-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.custom-modal-backdrop {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(34, 34, 59, 0.5);
+}
+.custom-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(60,60,60,0.18);
+  padding: 2rem;
+  min-width: 320px;
+  z-index: 1;
+}

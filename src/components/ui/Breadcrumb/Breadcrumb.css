@@ -1,0 +1,16 @@
+/* Breadcrumb Component CSS */
+.custom-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #6366f1;
+}
+.custom-breadcrumb .breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+.custom-breadcrumb .breadcrumb-separator {
+  margin: 0 0.25rem;
+  color: #a1a1aa;
+}

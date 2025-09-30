@@ -1,0 +1,27 @@
+/* Table Component CSS */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.08);
+}
+.custom-table th, .custom-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+.custom-table th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+.custom-table tr:last-child td {
+  border-bottom: none;
+}
+.custom-table.striped tbody tr:nth-child(odd) {
+  background: #f9fafb;
+}
+.custom-table.hover tbody tr:hover {
+  background: #e0e7ff;
+}

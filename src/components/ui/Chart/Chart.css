@@ -1,0 +1,12 @@
+/* Chart Component CSS */
+.custom-chart {
+  width: 100%;
+  min-height: 200px;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.08);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

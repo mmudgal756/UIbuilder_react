@@ -1,0 +1,25 @@
+/* Tabs Component CSS */
+.custom-tabs {
+  display: flex;
+  flex-direction: column;
+}
+.custom-tabs-header {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 1rem;
+}
+.custom-tab {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: 600;
+  color: #6366f1;
+  border-bottom: 2px solid transparent;
+  transition: border 0.2s, color 0.2s;
+}
+.custom-tab.active {
+  border-bottom: 2px solid #6366f1;
+  color: #22223b;
+}

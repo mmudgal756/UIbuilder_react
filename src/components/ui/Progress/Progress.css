@@ -1,0 +1,15 @@
+/* Progress Component CSS */
+.custom-progress {
+  width: 100%;
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.custom-progress-bar {
+  height: 100%;
+  background: #6366f1;
+  width: 0%;
+  transition: width 0.3s;
+}
