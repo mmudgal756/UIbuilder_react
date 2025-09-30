@@ -1,6 +1,7 @@
 import React from 'react';
 import { BaseProps, ValueOrBinding } from '../../../types/ui/shared';
 import { ComponentData } from '../../../types/components';
+import { useAppStore } from '../../../store/useAppStore';
 
 export interface ButtonProps extends BaseProps {
   component: ComponentData;
@@ -37,6 +38,7 @@ const sizeClasses: Record<string, string> = {
 };
 
 export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, onClick }) => {
+  const setCurrentPage = useAppStore(state => state.setCurrentPage);
   // read props from component.props (fallbacks)
   const props = (component.props || {}) as Record<string, any>;
 
@@ -104,6 +106,19 @@ export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, on
     if (typeof onClick === 'function') {
       try { onClick(); } catch (err) { /* swallow */ }
       return;
+    }
+
+    // If in preview mode and action is navigate, perform navigation
+    if (isPreview && onClickAction && typeof onClickAction === 'object' && onClickAction.type === 'navigate') {
+      // Support both 'page' and 'pageId' in payload
+      const page = onClickAction.payload?.page || onClickAction.payload?.pageId;
+      if (typeof page === 'string' && page.length > 0) {
+        setCurrentPage(page);
+        return;
+      } else {
+        window.alert('Navigate action: No page specified');
+        return;
+      }
     }
 
     // fallback: if an action descriptor is present, emit an event so the app can pick it up.

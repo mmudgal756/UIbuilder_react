@@ -231,7 +231,7 @@ const ActionBuilder: React.FC<ActionBuilderProps> = ({ value, onChange }) => {
           >
             <option value="">Select Page</option>
             {pages.map((p) => (
-              <option key={p.id} value={p.id}>
+              <option key={p.name} value={p.name}>
                 {p.name}
               </option>
             ))}
