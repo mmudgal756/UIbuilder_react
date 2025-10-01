@@ -389,7 +389,7 @@ export const PropertiesPanel: React.FC = () => {
 
         {/* Styling */}
         <div className="bg-gray-750 rounded">
-          <div className="text-sm font-medium mb-3">Styling</div>
+          <div className="text-sm font-medium mb-3">Style</div>
           <div className="space-y-3">
             <div>
               <label className="block text-sm font-medium mb-1">Background Color</label>

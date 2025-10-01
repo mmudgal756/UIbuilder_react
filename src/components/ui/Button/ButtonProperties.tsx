@@ -20,10 +20,10 @@ export const ButtonPropertiesPanel: React.FC<ButtonPropertiesPanelProps> = ({ va
       {/* Content Section */}
       <div>
         <div className="font-semibold mb-2">Content</div>
-        <label className="block mb-1 text-sm">Label
+        <label className="block mb-3 text-sm">Label
           <BindingEditor value={typeof value.label === 'string' ? value.label : ''} onChange={v => onChange({ ...value, label: v })} />
         </label>
-        <label className="block mb-1 text-sm">Button Variant
+        <label className="block mb-1 text-sm mb-3">Button Variant
           <select className="w-full p-1 rounded bg-gray-800 border border-gray-700" value={typeof value.variant === 'string' ? value.variant : ''} onChange={e => onChange({ ...value, variant: e.target.value as ButtonProps['variant'] })}>
             <option value="primary">Primary</option>
             <option value="secondary">Secondary</option>

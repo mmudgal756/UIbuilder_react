@@ -301,7 +301,7 @@ const ActionBuilder: React.FC<ActionBuilderProps> = ({ value, onChange }) => {
       )}
 
       {/* Custom JS Editor (optional) */}
-      <div className="bg-gray-800 p-3 rounded space-y-2">
+      <div className="bg-gray-800 rounded space-y-2">
         <div className="flex items-center justify-between">
           <div className="text-sm font-medium">Custom JS (Optional)</div>
           <div className="text-xs text-gray-400">{showCustomEditor ? 'On' : 'Off'}</div>
