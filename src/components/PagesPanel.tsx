@@ -128,7 +128,7 @@ export const PagesPanel: React.FC = () => {
                   </span>
                 )}
                 <button
-                  className="ml-2 flex items-center text-xs text-gray-500 hover:text-blue-500 focus:outline-none"
+                  className="ml-2 flex items-center text-xs focus:outline-none"
                   onClick={e => {
                     e.stopPropagation();
                     setOpenComponentLists(prev => ({ ...prev, [page.id]: !isOpen }));
@@ -137,13 +137,13 @@ export const PagesPanel: React.FC = () => {
                 >
                   {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                 </button>
-                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-1">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       startEditing(page.id, page.name);
                     }}
-                    className="p-1 hover:bg-gray-600 rounded transition-colors"
+                    className="p-1 rounded transition-colors"
                   >
                     <Edit2 className="w-3 h-3" />
                   </button>
@@ -153,7 +153,7 @@ export const PagesPanel: React.FC = () => {
                         e.stopPropagation();
                         deletePage(page.id);
                       }}
-                      className="p-1 hover:bg-red-600 rounded transition-colors text-red-400"
+                      className="p-1 transition-colors bg-transparent border-gray-400"
                     >
                       <Trash2 className="w-3 h-3" />
                     </button>

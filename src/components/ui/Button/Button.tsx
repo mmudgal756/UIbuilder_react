@@ -110,8 +110,8 @@ export const Button: React.FC<ButtonProps> = ({ component, isPreview = false, on
 
     // If in preview mode and action is navigate, perform navigation
     if (isPreview && onClickAction && typeof onClickAction === 'object' && onClickAction.type === 'navigate') {
-      // Support both 'page' and 'pageId' in payload
-      const page = onClickAction.payload?.page || onClickAction.payload?.pageId;
+      const page = onClickAction.payload?.pageId;
+      
       if (typeof page === 'string' && page.length > 0) {
         setCurrentPage(page);
         return;
