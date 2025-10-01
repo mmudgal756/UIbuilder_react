@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
-import { Plus, FileText, MoreVertical, Edit2, Trash2, Copy } from 'lucide-react';
+import { Plus, FileText, Edit2, Trash2 } from 'lucide-react';
 import { nanoid } from 'nanoid';
+import ComponentListSidebar from './ComponentListSidebar';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 
 export const PagesPanel: React.FC = () => {
   const { 
@@ -16,6 +18,7 @@ export const PagesPanel: React.FC = () => {
   const [newPageName, setNewPageName] = useState('');
   const [editingPageId, setEditingPageId] = useState<string | null>(null);
   const [editingName, setEditingName] = useState('');
+  const [openComponentLists, setOpenComponentLists] = useState<{ [pageId: string]: boolean }>({});
 
   const handleAddPage = () => {
     if (newPageName.trim()) {
@@ -89,65 +92,82 @@ export const PagesPanel: React.FC = () => {
         </div>
       )}
 
-      {/* Pages List */}
-      <div className="space-y-2">
-        {pages.map((page) => (
-          <div
-            key={page.id}
-            className={`group flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
-              currentPageId === page.id
-                ? 'bg-blue-600 text-white'
-                : 'hover:bg-gray-700 text-gray-300'
-            }`}
-            onClick={() => setCurrentPage(page.id)}
-          >
-            <FileText className="w-4 h-4 flex-shrink-0" />
-            
-            {editingPageId === page.id ? (
-              <input
-                type="text"
-                value={editingName}
-                onChange={(e) => setEditingName(e.target.value)}
-                className="flex-1 bg-transparent border-b border-gray-400 text-sm outline-none"
-                autoFocus
-                onBlur={() => handleEditPage(page.id, editingName)}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    handleEditPage(page.id, editingName);
-                  }
-                }}
-                onClick={(e) => e.stopPropagation()}
-              />
-            ) : (
-              <span className="flex-1 text-sm font-medium truncate">
-                {page.name}
-              </span>
-            )}
-
-            <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  startEditing(page.id, page.name);
-                }}
-                className="p-1 hover:bg-gray-600 rounded transition-colors"
+      {/* Pages List with dropped components below each page */}
+      <div className="space-y-2 mb-6">
+        {pages.map((page) => {
+          const isOpen = openComponentLists[page.id] ?? false;
+          return (
+            <div key={page.id}>
+              <div
+                className={`group flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
+                  currentPageId === page.id
+                    ? 'bg-blue-600 text-white'
+                    : 'hover:bg-gray-700 text-gray-300'
+                }`}
+                onClick={() => setCurrentPage(page.id)}
               >
-                <Edit2 className="w-3 h-3" />
-              </button>
-              {pages.length > 1 && (
+                <FileText className="w-4 h-4 flex-shrink-0" />
+                {editingPageId === page.id ? (
+                  <input
+                    type="text"
+                    value={editingName}
+                    onChange={(e) => setEditingName(e.target.value)}
+                    className="flex-1 bg-transparent border-b border-gray-400 text-sm outline-none"
+                    autoFocus
+                    onBlur={() => handleEditPage(page.id, editingName)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleEditPage(page.id, editingName);
+                      }
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                ) : (
+                  <span className="flex-1 text-sm font-medium truncate">
+                    {page.name}
+                  </span>
+                )}
                 <button
-                  onClick={(e) => {
+                  className="ml-2 flex items-center text-xs text-gray-500 hover:text-blue-500 focus:outline-none"
+                  onClick={e => {
                     e.stopPropagation();
-                    deletePage(page.id);
+                    setOpenComponentLists(prev => ({ ...prev, [page.id]: !isOpen }));
                   }}
-                  className="p-1 hover:bg-red-600 rounded transition-colors text-red-400"
+                  title={isOpen ? 'Hide components' : 'Show components'}
                 >
-                  <Trash2 className="w-3 h-3" />
+                  {isOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                 </button>
+                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      startEditing(page.id, page.name);
+                    }}
+                    className="p-1 hover:bg-gray-600 rounded transition-colors"
+                  >
+                    <Edit2 className="w-3 h-3" />
+                  </button>
+                  {pages.length > 1 && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deletePage(page.id);
+                      }}
+                      className="p-1 hover:bg-red-600 rounded transition-colors text-red-400"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+              </div>
+              {isOpen && (
+                <div className="ml-6">
+                  <ComponentListSidebar pageId={page.id} />
+                </div>
               )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {pages.length === 0 && (
