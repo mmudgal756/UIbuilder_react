@@ -19,11 +19,11 @@ export const LeftPanel: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   const tabs = [
-    { id: 'components', label: 'Components', icon: Layers, show: activeTab === 'canvas' },
+    { id: 'components', label: 'Components', icon: Layers, show: true },
     { id: 'pages', label: 'Pages', icon: FileText, show: true },
     { id: 'queries', label: 'Queries', icon: Database, show: true },
     { id: 'apis', label: 'APIs', icon: Globe, show: true },
-    { id: 'layers', label: 'Layers', icon: Layers, show: activeTab === 'canvas' },
+    { id: 'layers', label: 'Layers', icon: Layers, show: true },
   ] as const;
 
   const visibleTabs = tabs.filter(tab => tab.show);
@@ -68,22 +68,23 @@ export const LeftPanel: React.FC = () => {
   return (
     <div className="w-80 bg-gray-800 border-r border-gray-700 flex flex-col">
       {/* Header */}
-      <div className="h-12 border-b border-gray-700 flex items-center justify-between px-4">
-        <div className="flex items-center gap-1">
+      <div className="h-12 border-b border-gray-700 flex items-center justify-between px-2">
+        <div className="flex items-center gap-0.5 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-800">
           {visibleTabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setLeftPanelTab(tab.id)}
-                className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                className={`flex items-center gap-1 px-1.5 py-1 rounded text-xs font-medium transition-colors ${
                   leftPanelTab === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
                 }`}
+                style={{ minWidth: 0 }}
               >
                 <Icon className="w-4 h-4" />
-                <span className="hidden sm:inline">{tab.label}</span>
+                <span>{tab.label}</span>
               </button>
             );
           })}
