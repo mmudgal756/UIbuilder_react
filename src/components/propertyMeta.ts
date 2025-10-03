@@ -136,8 +136,8 @@ export const propertyMeta: Record<string, PropMeta[]> = {
     { key: 'layout', label: 'Layout', control: 'select', section: 'Layout', options: [{label:'Stack',value:'stack'},{label:'Flex',value:'flex'},{label:'Grid',value:'grid'}] },
   ],
   card: [
-    { key: 'header', label: 'Header', control: 'text', section: 'Content' },
-    { key: 'footer', label: 'Footer', control: 'text', section: 'Content' },
+    { key: 'title', label: 'Title', control: 'text', section: 'Content' },
+    { key: 'subtitle', label: 'Subtitle', control: 'text', section: 'Content' },
   ],
   json: [
     { key: 'data', label: 'Data (JSON)', control: 'json', section: 'Content' },

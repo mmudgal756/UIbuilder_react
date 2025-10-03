@@ -1,7 +1,9 @@
 export interface CardProps {
   title?: string;
   content?: string;
-  footer?: string | unknown;
+  subtitle?: string;
+  hoverable?: boolean;
+  outlined?: boolean;
   [key: string]: unknown;
 }
 

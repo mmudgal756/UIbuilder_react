@@ -4,7 +4,6 @@ import { Input } from '../ui/Input';
 import { Text } from '../ui/Text';
 import { Image } from '../ui/Image';
 import { Container } from '../ui/Container';
-import { Card } from '../ui/Card';
 import { Table } from '../ui/Table';
 import { Select } from '../ui/Select';
 import { Checkbox } from '../ui/Checkbox';
@@ -32,6 +31,7 @@ import { DatePicker } from '../ui/DatePicker';
 import { FileUpload } from '../ui/FileUpload';
 import { Radio } from '../ui/Radio';
 import Button from '../ui/Button/Button';
+import { Card } from '../ui/Card/Card';
 
 interface RenderComponentProps {
   component: ComponentData;
@@ -65,7 +65,7 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({
       return <Container component={component} isPreview={isPreview} />;
 
     case 'card':
-      return <Card component={component} isPreview={isPreview} />;
+      return <Card {...component.props} style={component.style} isPreview={isPreview} />;
 
     case 'table':
       return <Table component={component} isPreview={isPreview} />;

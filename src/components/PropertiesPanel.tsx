@@ -11,6 +11,7 @@ import { TablePropertiesPanel } from './ui/Table/TableProperties';
 import { FileUploadPropertiesPanel } from './ui/FileUpload/FileUploadProperties';
 import { DatePickerPropertiesPanel } from './ui/DatePicker/DatePickerProperties';
 import { InputPropertiesPanel } from './ui/Input/InputProperties';
+import { CardPropertiesPanel } from './ui/Card/CardProperties';
 
 /* ----------------- color utils ----------------- */
 function expandShortHex(hex: string) {
@@ -268,6 +269,10 @@ export const PropertiesPanel: React.FC = () => {
     if (type === 'button') {
       return <ButtonPropertiesPanel value={selectedComponent.props as import('./ui/Button/Button').ButtonProps} onChange={props => updateComponent(selectedComponent.id, { props })} />;
     }
+  if (type === 'card') {
+      return <CardPropertiesPanel value={selectedComponent.props as import('./ui/Card/Card').UICardProps} onChange={props => updateComponent(selectedComponent.id, { props })} />;
+    }
+    
     if (type === 'table') {
       return <TablePropertiesPanel value={selectedComponent.props as import('./ui/Table/Table').TableProps} onChange={props => updateComponent(selectedComponent.id, { props })} />;
     }

@@ -1,37 +1,27 @@
 import React from 'react';
-import './Card.css';
 
-export interface CardProps {
+import { CardProps } from '../../../types/ui/Card';
+
+export interface UICardProps extends CardProps {
+  style?: React.CSSProperties;
+  isPreview?: boolean;
   children?: React.ReactNode;
-  hoverable?: boolean;
-  outlined?: boolean;
-  title?: string;
-  subtitle?: string;
-  actions?: React.ReactNode;
-  coverImage?: string;
 }
 
-export const Card: React.FC<CardProps> = ({
-  children,
-  hoverable = false,
-  outlined = false,
-  title,
-  subtitle,
-  actions,
-  coverImage
-}) => {
-  const classNames = [
-    'custom-card',
-    hoverable ? 'hoverable' : '',
-    outlined ? 'outlined' : ''
-  ].join(' ');
+export const Card: React.FC<UICardProps> = ({ title, subtitle, style, children }) => {
+  const baseStyle = {
+    padding: '12px',
+    backgroundColor: style?.backgroundColor ?? '#1D4ED8',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+    borderRadius: '6px',
+    ...style,
+  } as React.CSSProperties;
+
   return (
-    <div className={classNames}>
-      {coverImage && <img src={coverImage} alt="cover" style={{ width: '100%', borderRadius: '0.75rem 0.75rem 0 0' }} />}
-      {title && <h3 style={{ margin: '0.5rem 0 0.25rem 0' }}>{title}</h3>}
-      {subtitle && <p style={{ margin: 0, color: '#6b7280' }}>{subtitle}</p>}
+    <div style={baseStyle} className="card">
+      {title && <div className="font-semibold mb-2">{title}</div>}
+      <div>{subtitle}</div>
       {children}
-      {actions && <div style={{ marginTop: '1rem' }}>{actions}</div>}
     </div>
   );
 };

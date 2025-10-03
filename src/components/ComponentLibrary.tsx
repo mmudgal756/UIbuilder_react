@@ -3,7 +3,6 @@ import { useDrag } from 'react-dnd';
 // Import all UI components for preview from their folders
 import { Text } from './ui/Text/Text';
 import { Input } from './ui/Input/Input';
-import { Card } from './ui/Card/Card';
 import { Checkbox } from './ui/Checkbox/Checkbox';
 import { Select } from './ui/Select/Select';
 import { Table } from './ui/Table/Table';
@@ -24,6 +23,7 @@ import { List } from './ui/List/List';
 import { Map } from './ui/Map/Map';
 import { Timeline } from './ui/Timeline/Timeline';
 import Button from './ui/Button/Button';
+import { Card } from './ui/Card/Card';
 // ...add more imports as you add more UI tools
 
 // Component meta for rendering and drag info
@@ -44,7 +44,7 @@ const COMPONENTS = [
       onClick: undefined
     },
     defaultSize: { width: 120, height: 40 },
-    defaultStyle: { backgroundColor: '#3B82F6', color: 'white', borderRadius: '6px', border: 'none', padding: '8px 16px', cursor: 'pointer' }
+    defaultStyle: { backgroundColor: '#2563EB ', color: 'white', borderRadius: '6px', border: 'none', padding: '8px 16px', cursor: 'pointer' }
   },
   {
     type: 'text',
@@ -71,10 +71,10 @@ const COMPONENTS = [
     name: 'Card',
     category: 'layout',
     component: Card,
-    previewProps: { title: 'Card Title', content: 'Card content' },
-    defaultProps: { title: 'Card Title', content: 'Card content' },
+    previewProps: { title: 'Card Title', subtitle: 'Card content' },
+    defaultProps: { title: 'Card Title', subtitle: 'Card content' },
     defaultSize: { width: 300, height: 200 },
-    defaultStyle: { backgroundColor: 'white', border: '1px solid #E5E7EB', borderRadius: '8px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
+    defaultStyle: { backgroundColor: '#2563EB', border: '1px solid #E5E7EB', borderRadius: '8px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
   },
   {
     type: 'checkbox',
