@@ -73,11 +73,11 @@ export const propertyMeta: Record<string, PropMeta[]> = {
     { key: 'pagination', label: 'Enable Pagination', control: 'checkbox', section: 'Data' },
   ],
   chart: [
-    { key: 'title', label: 'Chart Title', control: 'text', section: 'Content' },
-    { key: 'xAxisLabel', label: 'X Axis Label', control: 'text', section: 'Content' },
-    { key: 'yAxisLabel', label: 'Y Axis Label', control: 'text', section: 'Content' },
+    { key: 'title', label: 'Chart Title', control: 'text', section: 'Content', placeholder: 'Sales Report', description: 'Default: Sales Report' },
+    { key: 'xAxisLabel', label: 'X Axis Label', control: 'text', section: 'Content', placeholder: 'Product Line', description: 'Default: Product Line' },
+    { key: 'yAxisLabel', label: 'Y Axis Label', control: 'text', section: 'Content', placeholder: 'Revenue($)', description: 'Default: Revenue($)' },
     { key: 'chartType', label: 'Chart Type', control: 'select', section: 'ChartPropertiesPanel', options: [ { label: 'Line', value: 'line' }, { label: 'Bar', value: 'bar' }, { label: 'Pie', value: 'pie' } ] },
-    { key: 'data', label: 'Series data', control: 'json', section: 'ChartPropertiesPanel', description: 'Array of {x, y} objects' },
+    { key: 'data', label: 'Series data', control: 'json', section: 'ChartPropertiesPanel', description: 'Default: [{"x": "Product1", "y": 20000}, ...]' },
   ],
   modal: [
     { key: 'title', label: 'Title', control: 'text', section: 'Content' },
