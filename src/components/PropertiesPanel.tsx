@@ -12,6 +12,7 @@ import { FileUploadPropertiesPanel } from './ui/FileUpload/FileUploadProperties'
 import { DatePickerPropertiesPanel } from './ui/DatePicker/DatePickerProperties';
 import { InputPropertiesPanel } from './ui/Input/InputProperties';
 import { CardPropertiesPanel } from './ui/Card/CardProperties';
+import { ChartPropertiesPanel } from './ui/Chart/ChartProperties';
 
 /* ----------------- color utils ----------------- */
 function expandShortHex(hex: string) {
@@ -272,7 +273,13 @@ export const PropertiesPanel: React.FC = () => {
   if (type === 'card') {
       return <CardPropertiesPanel value={selectedComponent.props as import('./ui/Card/Card').UICardProps} onChange={props => updateComponent(selectedComponent.id, { props })} />;
     }
-    
+    // Chart: use ChartPropertiesPanel for ChartPropertiesPanel section, rest generic
+    if (type === 'chart') {
+      return (
+        <ChartPropertiesPanel value={selectedComponent.props as import('./ui/Chart/Chart').UIChartProps} onChange={props => updateComponent(selectedComponent.id, { props })}
+        />
+      );
+    }
     if (type === 'table') {
       return <TablePropertiesPanel value={selectedComponent.props as import('./ui/Table/Table').TableProps} onChange={props => updateComponent(selectedComponent.id, { props })} />;
     }

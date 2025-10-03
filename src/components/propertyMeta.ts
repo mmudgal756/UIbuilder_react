@@ -73,8 +73,11 @@ export const propertyMeta: Record<string, PropMeta[]> = {
     { key: 'pagination', label: 'Enable Pagination', control: 'checkbox', section: 'Data' },
   ],
   chart: [
-    { key: 'chartType', label: 'Type', control: 'select', section: 'Content', options: [ { label: 'Line', value: 'line' }, { label: 'Bar', value: 'bar' }, { label: 'Pie', value: 'pie' } ] },
-    { key: 'apiEndpoint', label: 'Series data', control: 'text', section: 'Data' },
+    { key: 'title', label: 'Chart Title', control: 'text', section: 'Content' },
+    { key: 'xAxisLabel', label: 'X Axis Label', control: 'text', section: 'Content' },
+    { key: 'yAxisLabel', label: 'Y Axis Label', control: 'text', section: 'Content' },
+    { key: 'chartType', label: 'Chart Type', control: 'select', section: 'ChartPropertiesPanel', options: [ { label: 'Line', value: 'line' }, { label: 'Bar', value: 'bar' }, { label: 'Pie', value: 'pie' } ] },
+    { key: 'data', label: 'Series data', control: 'json', section: 'ChartPropertiesPanel', description: 'Array of {x, y} objects' },
   ],
   modal: [
     { key: 'title', label: 'Title', control: 'text', section: 'Content' },

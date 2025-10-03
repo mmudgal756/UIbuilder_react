@@ -32,6 +32,7 @@ import { FileUpload } from '../ui/FileUpload';
 import { Radio } from '../ui/Radio';
 import Button from '../ui/Button/Button';
 import { Card } from '../ui/Card/Card';
+import { Chart } from '../ui/Chart/Chart';
 
 interface RenderComponentProps {
   component: ComponentData;
@@ -148,6 +149,8 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({
     case 'list':
       return <List component={component} isPreview={isPreview} />;
 
+    case 'chart':
+      return <Chart component={component} isPreview={isPreview} />;
     case 'json':
       return <JsonViewer component={component} isPreview={isPreview} />;
 
