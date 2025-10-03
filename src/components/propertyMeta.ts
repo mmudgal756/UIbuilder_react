@@ -74,7 +74,7 @@ export const propertyMeta: Record<string, PropMeta[]> = {
   ],
   chart: [
     { key: 'chartType', label: 'Type', control: 'select', section: 'Content', options: [ { label: 'Line', value: 'line' }, { label: 'Bar', value: 'bar' }, { label: 'Pie', value: 'pie' } ] },
-    { key: 'apiEndpoint', label: 'Data API Endpoint', control: 'text', section: 'Data' },
+    { key: 'apiEndpoint', label: 'Series data', control: 'text', section: 'Data' },
   ],
   modal: [
     { key: 'title', label: 'Title', control: 'text', section: 'Content' },

@@ -659,7 +659,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'app-builder-components', // name of the item in the storage (must be unique)
-      // Store per-page components and current page name
+      // Store per-page components, current page name, and apis
       partialize: (state) => ({
         pages: state.pages.map(page => ({
           id: page.id,
@@ -668,6 +668,7 @@ export const useAppStore = create<AppState>()(
         })),
         currentPageId: state.currentPageId,
         currentPageName: (state.pages.find(p => p.id === state.currentPageId)?.name) || '',
+        apis: state.apis,
       }),
     }
   )
