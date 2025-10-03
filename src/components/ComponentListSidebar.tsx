@@ -20,7 +20,7 @@ export const ComponentListSidebar: React.FC<ComponentListSidebarProps> = ({ page
         )}
         {page.components.map((comp:any) => (
           <li key={comp.id} className="flex items-center justify-between group hover:bg-gray-50 rounded px-2 py-1 transition">
-            <span className="truncate font-medium text-gray-800 text-xs">
+            <span className="capitalize truncate font-medium text-gray-800 text-xs">
               {comp.props?.name || comp.props?.label || comp.type}
             </span>
             <button

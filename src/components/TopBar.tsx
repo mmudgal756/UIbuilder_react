@@ -23,7 +23,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
           <Grid className="w-6 h-6 text-blue-400" />
-          <span className="text-lg font-semibold">AppBuilder ⚙️</span>
+          <span className="text-lg font-semibold">AppBuilder</span>
         </div>
         
         {/* Main Navigation Tabs */}
