@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 export const LeftPanel: React.FC = () => {
-  const { leftPanelTab, setLeftPanelTab, activeTab } = useAppStore();
+  const { leftPanelTab, setLeftPanelTab } = useAppStore();
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   const tabs = [

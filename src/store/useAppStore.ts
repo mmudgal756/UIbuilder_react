@@ -46,7 +46,7 @@ interface AppState {
   currentPageId: string;
   
   // API State
-  apis: ApiEndpoint[];
+  apis: Record<string, ApiEndpoint>; // key: api.name
   selectedApi: ApiEndpoint | null;
   
   // SQL State
@@ -163,7 +163,7 @@ export const useAppStore = create<AppState>()(
       currentPageId: 'page-1',
       
       // API State
-      apis: [],
+  apis: {},
       selectedApi: null,
       
       // SQL State
@@ -407,37 +407,46 @@ export const useAppStore = create<AppState>()(
       // API Actions
       addApi: (api) =>
         set((state) => ({
-          apis: [...state.apis, api],
+          apis: { ...state.apis, [api.name]: api },
         })),
       
       updateApi: (id, updates) =>
-        set((state) => ({
-          apis: state.apis.map((api) =>
-            api.id === id ? { ...api, ...updates } : api
-          ),
-          selectedApi:
-            state.selectedApi?.id === id
-              ? { ...state.selectedApi, ...updates }
-              : state.selectedApi,
-        })),
+        set((state) => {
+          // Find by id, update by name
+          const apiToUpdate = Object.values(state.apis).find(api => api.id === id);
+          if (!apiToUpdate) return {};
+          const updatedApi = { ...apiToUpdate, ...updates };
+          return {
+            apis: { ...state.apis, [updatedApi.name]: updatedApi },
+            selectedApi:
+              state.selectedApi?.id === id
+                ? { ...state.selectedApi, ...updates }
+                : state.selectedApi,
+          };
+        }),
       
       deleteApi: (id) =>
-        set((state) => ({
-          apis: state.apis.filter((api) => api.id !== id),
-          selectedApi: state.selectedApi?.id === id ? null : state.selectedApi,
-        })),
+        set((state) => {
+          const apiToDelete = Object.values(state.apis).find(api => api.id === id);
+          if (!apiToDelete) return {};
+          const { [apiToDelete.name]: _, ...rest } = state.apis;
+          return {
+            apis: rest,
+            selectedApi: state.selectedApi?.id === id ? null : state.selectedApi,
+          };
+        }),
 
       duplicateApi: (id) =>
         set((state) => {
-          const api = state.apis.find(a => a.id === id);
+          const api = Object.values(state.apis).find(a => a.id === id);
           if (!api) return state;
-          
           const newApi = {
             ...api,
-            id: `${api.id}-copy-${Date.now()}`,name: `${api.name} Copy`};
-          
+            id: `${api.id}-copy-${Date.now()}`,
+            name: `${api.name} Copy`
+          };
           return {
-            apis: [...state.apis, newApi]
+            apis: { ...state.apis, [newApi.name]: newApi }
           };
         }),
       
@@ -446,12 +455,14 @@ export const useAppStore = create<AppState>()(
       
       runApi: async (id) => {
         const state = get();
-        const api = state.apis.find(a => a.id === id);
+        const api = Object.values(state.apis).find(a => a.id === id);
         if (!api) return;
         
         set((state) => ({
-          apis: state.apis.map((a) =>
-            a.id === id ? { ...a, isLoading: true, error: undefined } : a
+          apis: Object.fromEntries(
+            Object.values(state.apis)
+              .map((a) => a.id === id ? { ...a, isLoading: true, error: undefined } : a)
+              .map(a => [a.name, a])
           ),
         }));
         
@@ -476,14 +487,18 @@ export const useAppStore = create<AppState>()(
           const data = await response.json();
           
           set((state) => ({
-            apis: state.apis.map((a) =>
-              a.id === id ? { ...a, isLoading: false, response: data } : a
+            apis: Object.fromEntries(
+              Object.values(state.apis)
+                .map((a) => a.id === id ? { ...a, isLoading: false, response: data } : a)
+                .map(a => [a.name, a])
             ),
           }));
         } catch (_error) {
           set((state) => ({
-            apis: state.apis.map((a) =>
-              a.id === id ? { ...a, isLoading: false, error: (_error as Error).message } : a
+            apis: Object.fromEntries(
+              Object.values(state.apis)
+                .map((a) => a.id === id ? { ...a, isLoading: false, error: (_error as Error).message } : a)
+                .map(a => [a.name, a])
             ),
           }));
         }
@@ -631,7 +646,7 @@ export const useAppStore = create<AppState>()(
     Object.entries(component.events || {}).map(([event, handler]) => 
         `        document.querySelector('[data-component-id="${component.id}"]')?.addEventListener('${event}', ${handler});`
     ).join('\\n')
-).join('\\n')}\n    }\n    \n    async loadData() {\n        // API calls\n${state.apis.map(api => `        // ${api.name}\n        try {\n            const response = await fetch('${api.url}', {\n                method: '${api.method}',\n                headers: ${JSON.stringify(api.headers, null, 16)}\n            });\n            const data = await response.json();\n            this.state.${api.name.toLowerCase().replace(/\\s+/g, '_')} = data;\n        } catch (error) {\n            console.error('Error loading ${api.name}:', error);\n        }`).join('\\n\\n')}\n    }\n    \n    updateComponent(id, data) {\n        const element = document.querySelector(\`[data-component-id="$\{id\}"]\`);\n        if (element) {\n            // Update component with new data\n            this.renderComponent(element, data);\n        }\n    }\n    \n    renderComponent(element, data) {\n        // Component rendering logic\n        element.innerHTML = JSON.stringify(data);\n    }\n}\n\n// Initialize the application\ndocument.addEventListener('DOMContentLoaded', () => {\n    new AppBuilder();\n});`;
+).join('\\n')}\n    }\n    \n    async loadData() {\n        // API calls\n        ${Object.values(state.apis).map((api: any) => `        // ${api.name}\n        try {\n            const response = await fetch('${api.url}', {\n                method: '${api.method}',\n                headers: ${JSON.stringify(api.headers, null, 16)}\n            });\n            const data = await response.json();\n            this.state.${api.name.toLowerCase().replace(/\s+/g, '_')} = data;\n        } catch (error) {\n            console.error('Error loading ${api.name}:', error);\n        }`).join('\n\n')}\n    }\n    \n    updateComponent(id, data) {\n        const element = document.querySelector(\`[data-component-id="$\{id\}"]\`);\n        if (element) {\n            // Update component with new data\n            this.renderComponent(element, data);\n        }\n    }\n    \n    renderComponent(element, data) {\n        // Component rendering logic\n        element.innerHTML = JSON.stringify(data);\n    }\n}\n\n// Initialize the application\ndocument.addEventListener('DOMContentLoaded', () => {\n    new AppBuilder();\n});`;
 
         set({
           generatedCode: {

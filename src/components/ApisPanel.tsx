@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
-import { Plus, Globe, Play, MoreVertical, Edit2, Trash2 } from 'lucide-react';
+import { Plus, Globe, Play, Trash2 } from 'lucide-react';
 import { nanoid } from 'nanoid';
 
 const methodColors = {
@@ -123,7 +123,7 @@ export const ApisPanel: React.FC = () => {
 
       {/* APIs List */}
       <div className="space-y-2">
-        {apis.map((api) => (
+        {Object.values(apis).map((api: any) => (
           <div
             key={api.id}
             className={`group flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
@@ -141,7 +141,7 @@ export const ApisPanel: React.FC = () => {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-sm font-medium truncate">{api.name}</span>
-                <span className={`px-2 py-0.5 rounded text-xs font-medium ${methodColors[api.method]}`}>
+                <span className={`px-2 py-0.5 rounded text-xs font-medium ${methodColors[api.method as keyof typeof methodColors]}`}>
                   {api.method}
                 </span>
               </div>
@@ -175,7 +175,7 @@ export const ApisPanel: React.FC = () => {
         ))}
       </div>
 
-      {apis.length === 0 && (
+      {Array.isArray(apis) && apis.length === 0 && (
         <div className="text-center py-8 text-gray-400">
           <Globe className="w-8 h-8 mx-auto mb-2 opacity-50" />
           <p className="text-sm">No APIs yet</p>
