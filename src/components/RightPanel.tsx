@@ -6,11 +6,10 @@ import { LogsPanel } from './LogsPanel';
 import { SettingsPanel } from './SettingsPanel';
 import { 
   Settings, 
-  Database, 
   FileText,
-  Cog,
+  Cog,SquareCode,
   ChevronLeft,
-  ChevronRight
+  ChevronRight                                                                                                             
 } from 'lucide-react';
 
 export const RightPanel: React.FC = () => {
@@ -19,7 +18,7 @@ export const RightPanel: React.FC = () => {
 
   const tabs = [
     { id: 'properties', label: 'Properties', icon: Settings, show: activeTab === 'canvas' && selectedComponent },
-    { id: 'data', label: 'Data', icon: Database, show: true },
+    { id: 'data', label: 'State', icon: SquareCode, show: true },
     { id: 'logs', label: 'Logs', icon: FileText, show: true },
     { id: 'settings', label: 'Settings', icon: Cog, show: true },
   ] as const;

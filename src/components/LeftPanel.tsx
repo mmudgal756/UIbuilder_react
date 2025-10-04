@@ -6,7 +6,7 @@ import { QueriesPanel } from './QueriesPanel';
 import { ApisPanel } from './ApisPanel';
 import { LayersPanel } from './LayersPanel';
 import { 
-  Layers, 
+  Layers, Component,
   FileText, 
   Database, 
   Globe,
@@ -19,10 +19,10 @@ export const LeftPanel: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   const tabs = [
-    { id: 'components', label: 'Components', icon: Layers, show: true },
+    { id: 'components', label: 'Components', icon: Component, show: true },
     { id: 'pages', label: 'Pages', icon: FileText, show: true },
-    { id: 'apis', label: 'APIs', icon: Globe, show: true },
-    { id: 'queries', label: 'Queries', icon: Database, show: true },
+    // { id: 'apis', label: 'APIs', icon: Globe, show: true },
+    // { id: 'queries', label: 'Queries', icon: Database, show: true },
     { id: 'layers', label: 'Layers', icon: Layers, show: true },
   ] as const;
 
@@ -76,7 +76,7 @@ export const LeftPanel: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setLeftPanelTab(tab.id)}
-                className={`flex items-center gap-1 px-1.5 py-1 rounded text-xs font-medium transition-colors ${
+                className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-sm font-medium transition-colors font-medium transition-colors ${
                   leftPanelTab === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'

@@ -66,19 +66,9 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
       </div>
 
       <div className="flex items-center gap-3">
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2">
-          <button className="px-3 py-1.5 text-sm bg-gray-700 hover:bg-gray-600 rounded-md transition-colors flex items-center gap-1.5">
-            <Upload className="w-4 h-4" />
-            Import
-          </button>
-          <button className="px-3 py-1.5 text-sm bg-gray-700 hover:bg-gray-600 rounded-md transition-colors flex items-center gap-1.5">
-            <Download className="w-4 h-4" />
-            Export
-          </button>
-        </div>
+     
 
-        <div className="w-px h-6 bg-gray-600"></div>
+        {/* <div className="w-px h-6 bg-gray-600"></div> */}
 
         {/* Preview and Deploy */}
         <div className="flex items-center gap-2">
