@@ -1,5 +1,6 @@
 import React from 'react';
 import { CardProps } from '../../../types/ui/Card';
+import { ApiAutocompleteInput } from '../ApiAutocompleteInput/ApiAutocompleteInput';
 
 interface CardPropertiesPanelProps {
   value: CardProps;
@@ -7,6 +8,12 @@ interface CardPropertiesPanelProps {
 }
 
 export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value, onChange }) => {
+    const handleSeriesDataChange = (newData: any) => {
+      console.log("New Data:", newData,value);
+      
+    onChange({ ...value, subtitle: newData });
+  };
+
   return (
    <div className="space-y-4 p-4 bg-white rounded-lg shadow">
   {/* Title */}
@@ -23,12 +30,20 @@ export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value,
   {/* Subtitle */}
   <label className="block">
     <span className="block text-sm font-medium text-gray-700 mb-1">Subtitle</span>
-    <input
+    {/* <input
       type="text"
       value={value.subtitle || ''}
       onChange={(e) => onChange({ ...value, subtitle: e.target.value })}
       className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-    />
+    /> */}
+
+
+       <ApiAutocompleteInput
+              value={value.subtitle}
+              onChange={handleSeriesDataChange}
+              rows={6}
+              showHelperText={true}
+            />
   </label>
 
   {/* Hoverable */}
