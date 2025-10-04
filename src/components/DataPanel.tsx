@@ -1,9 +1,13 @@
 import React from 'react';
 import { useAppStore } from '../store/useAppStore';
-import { Database, Globe, RefreshCw, Eye } from 'lucide-react';
+import { Database, Globe, Layers } from 'lucide-react';
 
 export const DataPanel: React.FC = () => {
-  const { apis, sqlQueries, globalState } = useAppStore();
+  const { apis, sqlQueries, globalState, pages, currentPageId } = useAppStore();
+  // Convert apis object to array
+  const apisArray = Object.values(apis);
+  // Get current page
+  const currentPage = pages.find(p => p.id === currentPageId);
 
   return (
     <div className="p-4 h-full overflow-y-auto">
@@ -23,11 +27,49 @@ export const DataPanel: React.FC = () => {
         </div>
       </div>
 
+  {/* Page Components */}
+      <div className="mb-6">
+        <h4 className="text-sm font-medium text-gray-300 mb-3">
+          Page Components ({currentPage?.name})
+        </h4>
+        <div className="space-y-2">
+          {currentPage?.components && currentPage.components.length > 0 ? (
+            currentPage.components.map((component) => (
+              <div key={component.id} className="bg-gray-750 rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <Layers className="w-4 h-4 text-purple-400" />
+                  <span className="text-sm font-medium">{component.id}</span>
+                  <span className="px-2 py-0.5 bg-purple-600 rounded text-xs">
+                    {component.type}
+                  </span>
+                </div>
+                <div className="text-xs text-gray-400 space-y-1">
+                  <div>Position: x: {component.x}, y: {component.y}</div>
+                  <div>Size: {component.width} × {component.height}</div>
+                  {component.props && Object.keys(component.props).length > 0 && (
+                    <details className="mt-2">
+                      <summary className="cursor-pointer text-blue-400 hover:text-blue-300">
+                        Props
+                      </summary>
+                      <pre className="text-xs text-gray-300 whitespace-pre-wrap mt-1 ml-2">
+                        {JSON.stringify(component.props, null, 2)}
+                      </pre>
+                    </details>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-sm text-gray-400">No components on this page</p>
+          )}
+        </div>
+      </div>
+
       {/* API Responses */}
       <div className="mb-6">
         <h4 className="text-sm font-medium text-gray-300 mb-3">API Responses</h4>
         <div className="space-y-2">
-          {apis.filter(api => api.response).map((api) => (
+          {apisArray.filter(api => api.response).map((api) => (
             <div key={api.id} className="bg-gray-750 rounded-lg p-3">
               <div className="flex items-center gap-2 mb-2">
                 <Globe className="w-4 h-4 text-blue-400" />
@@ -46,7 +88,7 @@ export const DataPanel: React.FC = () => {
               </pre>
             </div>
           ))}
-          {apis.filter(api => api.response).length === 0 && (
+          {apisArray.filter(api => api.response).length === 0 && (
             <p className="text-sm text-gray-400">No API responses yet</p>
           )}
         </div>

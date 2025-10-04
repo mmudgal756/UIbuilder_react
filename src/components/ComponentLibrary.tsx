@@ -438,7 +438,7 @@ export const ComponentLibrary: React.FC = () => {
   return (
     <div className="h-full overflow-y-auto bg-[#F8FAFC] border-r border-gray-200" style={{ minWidth: 260, maxWidth: 320 }}>
       <div className="px-4 pt-4 pb-2 sticky top-0 z-10 bg-[#F8FAFC] border-b border-gray-100">
-        <h3 className="text-base font-semibold mb-2 text-gray-900">Drag & drop UI elements</h3>
+        <h3 className="text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Drag & drop UI elements</h3>
         <input
           type="text"
           placeholder="Search UI elements"
