@@ -21,7 +21,7 @@ const datasourceIcons = {
 };
 
 const datasourceColors = {
-  postgresql: 'text-blue-400 bg-blue-400/10',
+  postgresql: 'text-teal-400 bg-teal-400/10',
   mysql: 'text-orange-400 bg-orange-400/10',
   mongodb: 'text-green-400 bg-green-400/10',
   'rest-api': 'text-purple-400 bg-purple-400/10',
@@ -107,7 +107,7 @@ export const DatasourceManager: React.FC = () => {
                 key={datasource.id}
                 className={`group flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
                   selectedDatasource?.id === datasource.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-teal-600 text-white'
                     : 'hover:bg-gray-700 text-gray-300'
                 }`}
                 onClick={() => selectDatasource(datasource)}
@@ -154,7 +154,7 @@ export const DatasourceManager: React.FC = () => {
               <p className="text-sm">No datasources yet</p>
               <button
                 onClick={() => setShowAddForm(true)}
-                className="text-blue-400 hover:text-blue-300 text-sm mt-1"
+                className="text-teal-400 hover:text-teal-300 text-sm mt-1"
               >
                 Add your first datasource
               </button>
@@ -287,7 +287,7 @@ export const DatasourceManager: React.FC = () => {
                 <div className="flex gap-3 pt-4">
                   <button
                     onClick={handleAddDatasource}
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm font-medium transition-colors"
+                    className="px-4 py-2 bg-teal-600 hover:bg-teal-700 rounded text-sm font-medium transition-colors"
                   >
                     Add Datasource
                   </button>

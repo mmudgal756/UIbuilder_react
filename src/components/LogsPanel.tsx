@@ -48,7 +48,7 @@ const levelIcons = {
 };
 
 const levelColors = {
-  info: 'text-blue-400',
+  info: 'text-teal-400',
   success: 'text-green-400',
   warning: 'text-yellow-400',
   error: 'text-red-400',

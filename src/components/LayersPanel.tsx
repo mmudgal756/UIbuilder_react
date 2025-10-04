@@ -18,7 +18,7 @@ export const LayersPanel: React.FC = () => {
             key={component.id}
             className={`flex items-center gap-3 p-2 rounded cursor-pointer transition-colors ${
               selectedComponent?.id === component.id
-                ? 'bg-blue-600'
+                ? 'bg-teal-600'
                 : 'hover:bg-gray-700'
             }`}
             onClick={() => selectComponent(component)}

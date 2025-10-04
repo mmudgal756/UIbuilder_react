@@ -159,7 +159,7 @@ export const ApiAutocompleteInput: React.FC<ApiAutocompleteInputProps> = ({
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className={`w-full p-3 bg-gray-900 border border-gray-700 rounded-md text-green-300 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+        className={`w-full p-3 bg-gray-900 border border-gray-700 rounded-md text-green-300 font-mono text-xs focus:outline-none focus:ring-2 focus:ring-teal-500 ${className}`}
       />
       
       {showDropdown && (
@@ -173,7 +173,7 @@ export const ApiAutocompleteInput: React.FC<ApiAutocompleteInputProps> = ({
               onClick={() => handleApiSelect(api)}
               className="px-4 py-3 hover:bg-gray-700 cursor-pointer border-b border-gray-700 last:border-b-0 transition-colors"
             >
-              <div className="font-medium text-blue-400">{api}</div>
+              <div className="font-medium text-teal-400">{api}</div>
               <div className="text-xs text-gray-400 mt-1">
                 {`{{${api}.response}}`}
               </div>
@@ -192,7 +192,7 @@ export const ApiAutocompleteInput: React.FC<ApiAutocompleteInputProps> = ({
       
       {showHelperText && (
         <div className="text-xs text-gray-400 mt-2 space-y-1">
-          <div className="text-blue-400">
+          <div className="text-teal-400">
             💡 Type <code className="bg-gray-700 px-1 rounded">/</code> to see available APIs
           </div>
           <div className="text-gray-500">
@@ -210,7 +210,7 @@ export const ApiAutocompleteInput: React.FC<ApiAutocompleteInputProps> = ({
             {apiNames.map((api) => (
               <span
                 key={api}
-                className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-xs text-blue-400"
+                className="px-2 py-1 bg-gray-800 border border-gray-600 rounded text-xs text-teal-400"
               >
                 {api}
               </span>

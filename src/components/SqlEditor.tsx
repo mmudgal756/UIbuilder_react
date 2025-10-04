@@ -36,7 +36,7 @@ export const SqlEditor: React.FC = () => {
       <div className="h-16 border-b border-gray-700 flex items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">
-            <Database className="w-5 h-5 text-blue-400" />
+            <Database className="w-5 h-5 text-teal-400" />
             <div>
               <h2 className="font-medium">{selectedQuery.name}</h2>
               <p className="text-sm text-gray-400">
@@ -73,7 +73,7 @@ export const SqlEditor: React.FC = () => {
             onClick={() => setActiveTab('query')}
             className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
               activeTab === 'query'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-teal-600 text-white'
                 : 'text-gray-300 hover:text-white hover:bg-gray-700'
             }`}
           >
@@ -83,7 +83,7 @@ export const SqlEditor: React.FC = () => {
             onClick={() => setActiveTab('result')}
             className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
               activeTab === 'result'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-teal-600 text-white'
                 : 'text-gray-300 hover:text-white hover:bg-gray-700'
             }`}
           >
@@ -114,7 +114,7 @@ export const SqlEditor: React.FC = () => {
                 value={selectedQuery.query}
                 onChange={(e) => updateSqlQuery(selectedQuery.id, { query: e.target.value })}
                 placeholder="Enter your SQL query here..."
-                className="flex-1 w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white font-mono text-sm resize-none focus:outline-none focus:border-blue-500"
+                className="flex-1 w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white font-mono text-sm resize-none focus:outline-none focus:border-teal-500"
                 style={{ minHeight: '300px' }}
               />
               
@@ -138,7 +138,7 @@ export const SqlEditor: React.FC = () => {
             {selectedQuery.isLoading ? (
               <div className="flex items-center justify-center h-full">
                 <div className="text-center">
-                  <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                  <div className="w-8 h-8 border-2 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
                   <p className="text-sm text-gray-400">Executing query...</p>
                 </div>
               </div>

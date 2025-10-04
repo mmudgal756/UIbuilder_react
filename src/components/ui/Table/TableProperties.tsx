@@ -50,7 +50,7 @@ export const TablePropertiesPanel: React.FC<TablePropertiesPanelProps> = ({ valu
             <button type="button" className="px-2 py-1 bg-red-700 text-white rounded" onClick={() => removeColumn(idx)}>-</button>
           </div>
         ))}
-        <button type="button" className="mt-1 px-2 py-1 bg-blue-700 text-white rounded" onClick={addColumn}>Add Column</button>
+        <button type="button" className="mt-1 px-2 py-1 bg-teal-700 text-white rounded" onClick={addColumn}>Add Column</button>
       </div>
 
       {/* Options Section */}

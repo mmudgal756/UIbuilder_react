@@ -122,7 +122,7 @@ export const Canvas: React.FC = () => {
           drop(node);
         }}
         className={`flex-1 relative overflow-auto transition-all ${
-          isOver ? 'bg-blue-50 border-2 border-dashed border-blue-300' : 'bg-white'
+          isOver ? 'bg-teal-50 border-2 border-dashed border-teal-300' : 'bg-white'
         }`}
         onClick={handleCanvasClick}
         style={{
@@ -149,7 +149,7 @@ export const Canvas: React.FC = () => {
         {/* Drop indicator */}
         {isOver && (
           <div className="absolute inset-0 pointer-events-none">
-            <div className="flex items-center justify-center h-full text-blue-500 text-lg font-medium">
+            <div className="flex items-center justify-center h-full text-teal-500 text-lg font-medium">
               Drop component here
             </div>
           </div>

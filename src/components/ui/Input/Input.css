@@ -8,7 +8,7 @@
   transition: border 0.2s, box-shadow 0.2s;
 }
 .custom-input:focus {
-  border-color: #6366f1;
+  border-color: #0d9488;
   box-shadow: 0 0 0 2px #6366f133;
 }
 .custom-input.error {

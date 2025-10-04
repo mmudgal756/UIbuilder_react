@@ -11,7 +11,7 @@
 .custom-checkbox .checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #6366f1;
+  border: 2px solid #0d9488;
   border-radius: 0.25rem;
   margin-right: 0.5rem;
   background: #fff;
@@ -19,8 +19,8 @@
   transition: background 0.2s, border 0.2s;
 }
 .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-  background: #6366f1;
-  border-color: #6366f1;
+  background: #0d9488;
+  border-color: #0d9488;
 }
 .custom-checkbox .checkmark:after {
   content: '';

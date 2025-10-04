@@ -48,10 +48,10 @@ export const SettingsPanel: React.FC = () => {
       },
     },
     {
-      id: "blue",
-      name: "Blue",
+      id: "teal",
+      name: "teal",
       colors: {
-        primary: "#2563EB",
+        primary: "#0d9488",
         secondary: "#64748B",
         accent: "#0EA5E9",
         background: "#F8FAFC",
@@ -157,7 +157,7 @@ export const SettingsPanel: React.FC = () => {
                 key={theme.id}
                 className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
                   settings.theme.id === theme.id
-                    ? "border-blue-500 bg-blue-500/10"
+                    ? "border-teal-500 bg-teal-500/10"
                     : "border-gray-600 hover:border-gray-500"
                 }`}
                 onClick={() => updateSettings({ theme })}
@@ -211,7 +211,7 @@ export const SettingsPanel: React.FC = () => {
                   key={device}
                   className={`flex flex-col items-center gap-1 p-3 rounded transition-colors ${
                     settings.device === device
-                      ? "bg-blue-600 text-white"
+                      ? "bg-teal-600 text-white"
                       : "bg-gray-700 hover:bg-gray-600"
                   }`}
                   onClick={() => updateSettings({ device })}

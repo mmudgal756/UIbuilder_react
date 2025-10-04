@@ -12,7 +12,7 @@ export interface ProgressProps {
 export const Progress: React.FC<ProgressProps> = ({
   value,
   max = 100,
-  color = '#6366f1',
+  color = '#0d9488',
   showLabel = false,
   height = 16
 }) => {

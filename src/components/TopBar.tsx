@@ -31,7 +31,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
     <div className="h-14 bg-gray-800 border-b border-gray-700 flex items-center justify-between px-4">
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
-          <Grid className="w-6 h-6 text-blue-400" />
+          <Grid className="w-6 h-6 text-teal-400" />
           <span className="text-lg font-semibold">AppBuilder</span>
         </div>
         
@@ -45,7 +45,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
                 onClick={() => handleTabClick(tab.id, tab.leftPanel)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                   activeTab === tab.id
-                    ? 'bg-blue-600 text-white shadow-sm'
+                    ? 'bg-teal-600 text-white shadow-sm'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
                 }`}
               >
@@ -74,12 +74,12 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
         <div className="flex items-center gap-2">
           <button
             onClick={onPreview}
-            className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-md transition-colors flex items-center gap-2 text-sm font-medium"
+            className="px-4 py-2 bg-teal-700 hover:bg-teal-800 rounded-md transition-colors flex items-center gap-2 text-sm font-medium"
           >
             <Eye className="w-4 h-4" />
             Preview
           </button>
-          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors flex items-center gap-2 text-sm font-medium">
+          <button className="px-4 py-2 bg-teal-600 hover:bg-teal-700 rounded-md transition-colors flex items-center gap-2 text-sm font-medium">
             <Share2 className="w-4 h-4" />
             Deploy
           </button>

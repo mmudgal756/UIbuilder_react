@@ -13,7 +13,7 @@ import {
 
 const methodColors = {
   GET: 'bg-green-600 hover:bg-green-700',
-  POST: 'bg-blue-600 hover:bg-blue-700',
+  POST: 'bg-teal-600 hover:bg-teal-700',
   PUT: 'bg-yellow-600 hover:bg-yellow-700',
   DELETE: 'bg-red-600 hover:bg-red-700',
   PATCH: 'bg-purple-600 hover:bg-purple-700',
@@ -245,7 +245,7 @@ export const ApiBuilder: React.FC = () => {
             {selectedApi.isLoading ? (
               <div className="flex items-center justify-center py-8">
                 <div className="text-center">
-                  <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                  <div className="w-8 h-8 border-2 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
                   <p className="text-sm text-gray-400">Running API...</p>
                 </div>
               </div>

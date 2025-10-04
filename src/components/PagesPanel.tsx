@@ -75,7 +75,7 @@ export const PagesPanel: React.FC = () => {
           <div className="flex gap-2">
             <button
               onClick={handleAddPage}
-              className="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm transition-colors"
+              className="px-3 py-1 bg-teal-600 hover:bg-teal-700 rounded text-sm transition-colors"
             >
               Add
             </button>
@@ -101,7 +101,7 @@ export const PagesPanel: React.FC = () => {
               <div
                 className={`group flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
                   currentPageId === page.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-teal-600 text-white'
                     : 'hover:bg-gray-700 text-gray-300'
                 }`}
                 onClick={() => setCurrentPage(page.id)}
@@ -176,7 +176,7 @@ export const PagesPanel: React.FC = () => {
           <p className="text-sm">No pages yet</p>
           <button
             onClick={() => setShowAddForm(true)}
-            className="text-blue-400 hover:text-blue-300 text-sm mt-1"
+            className="text-teal-400 hover:text-teal-300 text-sm mt-1"
           >
             Create your first page
           </button>

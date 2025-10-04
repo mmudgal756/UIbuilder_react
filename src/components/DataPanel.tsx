@@ -48,7 +48,7 @@ export const DataPanel: React.FC = () => {
                   <div>Size: {component.width} × {component.height}</div>
                   {component.props && Object.keys(component.props).length > 0 && (
                     <details className="mt-2">
-                      <summary className="cursor-pointer text-blue-400 hover:text-blue-300">
+                      <summary className="cursor-pointer text-teal-400 hover:text-teal-300">
                         Props
                       </summary>
                       <pre className="text-xs text-gray-300 whitespace-pre-wrap mt-1 ml-2">
@@ -72,11 +72,11 @@ export const DataPanel: React.FC = () => {
           {apisArray.filter(api => api.response).map((api) => (
             <div key={api.id} className="bg-gray-750 rounded-lg p-3">
               <div className="flex items-center gap-2 mb-2">
-                <Globe className="w-4 h-4 text-blue-400" />
+                <Globe className="w-4 h-4 text-teal-400" />
                 <span className="text-sm font-medium">{api.name}</span>
                 <span className={`px-2 py-0.5 rounded text-xs ${
                   api.method === 'GET' ? 'bg-green-600' :
-                  api.method === 'POST' ? 'bg-blue-600' :
+                  api.method === 'POST' ? 'bg-teal-600' :
                   api.method === 'PUT' ? 'bg-yellow-600' :
                   api.method === 'DELETE' ? 'bg-red-600' : 'bg-gray-600'
                 }`}>

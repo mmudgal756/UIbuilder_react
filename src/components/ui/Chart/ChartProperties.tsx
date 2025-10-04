@@ -21,7 +21,7 @@ export const ChartPropertiesPanel: React.FC<ChartPropertiesPanelProps> = ({ valu
           type="text"
           value={value.title || ''}
           onChange={(e) => onChange({ ...value, title: e.target.value })}
-          className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
       </label>
 
@@ -32,7 +32,7 @@ export const ChartPropertiesPanel: React.FC<ChartPropertiesPanelProps> = ({ valu
           type="text"
           value={value.xAxisLabel || ''}
           onChange={(e) => onChange({ ...value, xAxisLabel: e.target.value })}
-          className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
       </label>
 
@@ -43,7 +43,7 @@ export const ChartPropertiesPanel: React.FC<ChartPropertiesPanelProps> = ({ valu
           type="text"
           value={value.yAxisLabel || ''}
           onChange={(e) => onChange({ ...value, yAxisLabel: e.target.value })}
-          className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
       </label>
 
@@ -56,7 +56,7 @@ export const ChartPropertiesPanel: React.FC<ChartPropertiesPanelProps> = ({ valu
             onChange={(e) =>
               onChange({ ...value, type: e.target.value as 'bar' | 'line' | 'pie' })
             }
-            className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-teal-500"
           >
             <option value="bar">Bar</option>
             <option value="line">Line</option>

@@ -17,7 +17,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items }) => {
     <ul className="custom-timeline">
       {items.map(item => (
         <li className="custom-timeline-item" key={item.key}>
-          <span className="custom-timeline-dot" style={{ borderColor: item.color || '#6366f1' }} />
+          <span className="custom-timeline-dot" style={{ borderColor: item.color || '#0d9488' }} />
           <div><strong>{item.label}</strong></div>
           {item.content && <div>{item.content}</div>}
         </li>

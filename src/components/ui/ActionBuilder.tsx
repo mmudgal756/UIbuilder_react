@@ -327,7 +327,7 @@ const ActionBuilder: React.FC<ActionBuilderProps> = ({ value, onChange }) => {
           </button>
 
           <button
-            className="px-3 py-1 bg-blue-600 rounded"
+            className="px-3 py-1 bg-teal-600 rounded"
             onClick={() => {
               setCustomFnError(null);
               handleApplyCustomFunction();

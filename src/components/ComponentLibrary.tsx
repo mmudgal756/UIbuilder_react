@@ -44,7 +44,7 @@ const COMPONENTS = [
       onClick: undefined
     },
     defaultSize: { width: 120, height: 40 },
-    defaultStyle: { backgroundColor: '#2563EB ', color: 'white', borderRadius: '6px', border: 'none', padding: '8px 16px', cursor: 'pointer' }
+    defaultStyle: { backgroundColor: '#0d9488 ', color: 'white', borderRadius: '6px', border: 'none', padding: '8px 16px', cursor: 'pointer' }
   },
   {
     type: 'text',
@@ -74,7 +74,7 @@ const COMPONENTS = [
     previewProps: { title: 'Card Title', subtitle: 'Card content' },
     defaultProps: { title: 'Card Title', subtitle: 'Card content' },
     defaultSize: { width: 300, height: 200 },
-    defaultStyle: { backgroundColor: '#2563EB', border: '1px solid #E5E7EB', borderRadius: '8px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
+    defaultStyle: { backgroundColor: '#0d9488', border: '1px solid #E5E7EB', borderRadius: '8px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
   },
   {
     type: 'checkbox',
@@ -251,7 +251,7 @@ const COMPONENTS = [
       title: 'Sales Report',
     },
     defaultSize: { width: 400, height: 300 },
-    defaultStyle: { border: '1px solid #E5E7EB', borderRadius: '6px', padding: '16px' },
+    defaultStyle: { border: '1px solid #E5E7EB', backgroundColor: ' #E5E7EB', borderRadius: '6px', padding: '16px' },
   },
   {
     type: 'breadcrumb',
@@ -324,34 +324,45 @@ export type ComponentMeta = {
 // Simple SVG icon mapping for each component type
 const componentIcons: Record<string, JSX.Element> = {
   Text: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="2" rx="1"/><rect x="4" y="11" width="10" height="2" rx="1"/><rect x="4" y="16" width="7" height="2" rx="1"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="2" rx="1"/><rect x="4" y="11" width="10" height="2" rx="1"/><rect x="4" y="16" width="7" height="2" rx="1"/></svg>
   ),
+    Map: (
+    <svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-map-icon lucide-map"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+  ),
+
+  List:(<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/></svg>),
+
+  
+  Chart:(<svg  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><rect x="15" y="5" width="4" height="12" rx="1"/><rect x="7" y="8" width="4" height="9" rx="1"/></svg>),
+
+    Table:(<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>),
+    
   Input: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/><rect x="6" y="11" width="2" height="2" rx="1"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/><rect x="6" y="11" width="2" height="2" rx="1"/></svg>
   ),
   Checkbox: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-5"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-5"/></svg>
   ),
   Select: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="4" rx="2"/><path d="M8 17h8"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="4" rx="2"/><path d="M8 17h8"/></svg>
   ),
   Radio: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="#6366F1"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="#0d9488"/></svg>
   ),
   Switch: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="6" rx="3"/><circle cx="9" cy="12" r="3" fill="#6366F1"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="6" rx="3"/><circle cx="9" cy="12" r="3" fill="#0d9488"/></svg>
   ),
   Slider: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="2" rx="1"/><circle cx="12" cy="12" r="3" fill="#6366F1"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="2" rx="1"/><circle cx="12" cy="12" r="3" fill="#0d9488"/></svg>
   ),
   'Date Picker': (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 9h18"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 9h18"/></svg>
   ),
   'File Upload': (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v6m0 0l-3-3m3 3l3-3"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v6m0 0l-3-3m3 3l3-3"/></svg>
   ),
   Card: (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M4 10h16"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M4 10h16"/></svg>
   ),
 };
 
@@ -376,12 +387,12 @@ const ComponentPreviewItem: React.FC<{ comp: ComponentMeta; usePreview?: boolean
   const Comp = comp.component;
   // Use icon if available, fallback to generic box
   const icon = componentIcons[comp.name] || (
-    <svg width="22" height="22" fill="none" stroke="#6366F1" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+    <svg width="22" height="22" fill="none" stroke="#0d9488" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
   );
   return (
     <div
       ref={drag}
-      className={`flex flex-col items-center gap-1 rounded-lg border border-gray-200 bg-white shadow-sm px-2 py-2 mb-2 cursor-pointer transition-all hover:shadow-md hover:border-blue-400 ${isDragging ? 'opacity-50 border-blue-500' : ''}`}
+      className={`flex flex-col items-center gap-1 rounded-lg border border-gray-200 bg-white shadow-sm px-2 py-2 mb-2 cursor-pointer transition-all hover:shadow-md hover:border-teal-400 ${isDragging ? 'opacity-50 border-teal-500' : ''}`}
       style={{ minHeight: 70, minWidth: 70, maxWidth: 90, userSelect: 'none', transition: 'box-shadow 0.18s, border 0.18s, background 0.18s' }}
       title={comp.name}
     >
@@ -444,7 +455,7 @@ export const ComponentLibrary: React.FC = () => {
           placeholder="Search UI elements"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full px-3 py-2 mb-2 rounded border border-gray-300 bg-white text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-full px-3 py-2 mb-2 rounded border border-gray-300 bg-white text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-200"
         />
       </div>
       <div className="px-4 pt-2 pb-6">

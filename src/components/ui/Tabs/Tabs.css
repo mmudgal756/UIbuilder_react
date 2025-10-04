@@ -15,11 +15,11 @@
   border: none;
   background: none;
   font-weight: 600;
-  color: #6366f1;
+  color: #0d9488;
   border-bottom: 2px solid transparent;
   transition: border 0.2s, color 0.2s;
 }
 .custom-tab.active {
-  border-bottom: 2px solid #6366f1;
+  border-bottom: 2px solid #0d9488;
   color: #22223b;
 }

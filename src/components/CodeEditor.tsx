@@ -80,7 +80,7 @@ export const CodeEditor: React.FC = () => {
       <div className="h-16 border-b border-gray-700 flex items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">
-            <Code className="w-5 h-5 text-blue-400" />
+            <Code className="w-5 h-5 text-teal-400" />
             <div>
               <h2 className="font-medium">Code Generator</h2>
               <p className="text-sm text-gray-400">
@@ -111,7 +111,7 @@ export const CodeEditor: React.FC = () => {
           <button
             onClick={handleGenerateCode}
             disabled={isGenerating}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 rounded-md text-sm font-medium flex items-center gap-2 transition-colors"
+            className="px-4 py-2 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 rounded-md text-sm font-medium flex items-center gap-2 transition-colors"
           >
             {isGenerating ? (
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -146,7 +146,7 @@ export const CodeEditor: React.FC = () => {
                 onClick={() => setActiveCodeTab(tab.id as any)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeCodeTab === tab.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-teal-600 text-white'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
                 }`}
               >
@@ -186,7 +186,7 @@ export const CodeEditor: React.FC = () => {
               <button
                 onClick={handleGenerateCode}
                 disabled={isGenerating}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 rounded-md text-sm font-medium flex items-center gap-2 mx-auto transition-colors"
+                className="px-4 py-2 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 rounded-md text-sm font-medium flex items-center gap-2 mx-auto transition-colors"
               >
                 {isGenerating ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

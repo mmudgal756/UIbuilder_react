@@ -81,7 +81,7 @@ export const QueriesPanel: React.FC = () => {
             <button
               onClick={handleAddQuery}
               disabled={!newQueryName.trim() || !selectedDatasource}
-              className="px-3 py-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded text-sm transition-colors"
+              className="px-3 py-1 bg-teal-600 hover:bg-teal-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded text-sm transition-colors"
             >
               Create
             </button>
@@ -108,7 +108,7 @@ export const QueriesPanel: React.FC = () => {
               key={query.id}
               className={`group flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
                 selectedQuery?.id === query.id
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-teal-600 text-white'
                   : 'hover:bg-gray-700 text-gray-300'
               }`}
               onClick={() => {
@@ -146,7 +146,7 @@ export const QueriesPanel: React.FC = () => {
               </div>
 
               {query.isLoading && (
-                <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-4 h-4 border-2 border-teal-400 border-t-transparent rounded-full animate-spin"></div>
               )}
             </div>
           );
@@ -159,7 +159,7 @@ export const QueriesPanel: React.FC = () => {
           <p className="text-sm">No queries yet</p>
           <button
             onClick={() => setShowAddForm(true)}
-            className="text-blue-400 hover:text-blue-300 text-sm mt-1"
+            className="text-teal-400 hover:text-teal-300 text-sm mt-1"
           >
             Create your first query
           </button>

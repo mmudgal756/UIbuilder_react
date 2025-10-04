@@ -52,7 +52,7 @@ export const RightPanel: React.FC = () => {
                 }}
                 className={`w-8 h-8 flex items-center justify-center rounded transition-colors ${
                   rightPanelTab === tab.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-teal-600 text-white'
                     : 'text-gray-400 hover:text-white hover:bg-gray-700'
                 }`}
                 title={tab.label}
@@ -79,7 +79,7 @@ export const RightPanel: React.FC = () => {
                 onClick={() => setRightPanelTab(tab.id)}
                 className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${
                   rightPanelTab === tab.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-teal-600 text-white'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
                 }`}
               >

@@ -26,7 +26,7 @@ export const TimelinePropertiesPanel: React.FC<TimelinePropertiesPanelProps> = (
             <input type="text" placeholder="Key" value={item.key} onChange={e => handleItemChange(idx, 'key', e.target.value)} />
             <input type="text" placeholder="Label" value={item.label} onChange={e => handleItemChange(idx, 'label', e.target.value)} />
             <input type="text" placeholder="Content" value={item.content as string} onChange={e => handleItemChange(idx, 'content', e.target.value)} />
-            <input type="color" value={item.color || '#6366f1'} onChange={e => handleItemChange(idx, 'color', e.target.value)} />
+            <input type="color" value={item.color || '#0d9488'} onChange={e => handleItemChange(idx, 'color', e.target.value)} />
             <button type="button" onClick={() => removeItem(idx)}>-</button>
           </div>
         ))}

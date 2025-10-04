@@ -131,7 +131,7 @@ export const DraggableComponent: React.FC<DraggableComponentProps> = ({
     <div
       ref={drag}
       className={`absolute transition-all duration-200 ${
-        isSelected ? 'ring-2 ring-blue-500 ring-opacity-75 shadow-lg' : ''
+        isSelected ? 'ring-2 ring-teal-500 ring-opacity-75 shadow-lg' : ''
       } ${isDragSource ? 'opacity-50' : ''} ${isDragging ? 'cursor-move' : 'cursor-pointer'}`}
       style={{
         left: component.x,
@@ -198,19 +198,19 @@ export const DraggableComponent: React.FC<DraggableComponentProps> = ({
          
           {/* Edge handles */}
           <div
-            className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-blue-500 border border-white rounded cursor-n-resize shadow-sm hover:bg-blue-600 transition-colors"
+            className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-teal-500 border border-white rounded cursor-n-resize shadow-sm hover:bg-teal-600 transition-colors"
             onMouseDown={(e) => handleResize('top', e)}
           />
           <div
-            className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-blue-500 border border-white rounded cursor-s-resize shadow-sm hover:bg-blue-600 transition-colors"
+            className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-teal-500 border border-white rounded cursor-s-resize shadow-sm hover:bg-teal-600 transition-colors"
             onMouseDown={(e) => handleResize('bottom', e)}
           />
           <div
-            className="absolute -left-1 top-1/2 transform -translate-y-1/2 w-2 h-4 bg-blue-500 border border-white rounded cursor-w-resize shadow-sm hover:bg-blue-600 transition-colors"
+            className="absolute -left-1 top-1/2 transform -translate-y-1/2 w-2 h-4 bg-teal-500 border border-white rounded cursor-w-resize shadow-sm hover:bg-teal-600 transition-colors"
             onMouseDown={(e) => handleResize('left', e)}
           />
           <div
-            className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-2 h-4 bg-blue-500 border border-white rounded cursor-e-resize shadow-sm hover:bg-blue-600 transition-colors"
+            className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-2 h-4 bg-teal-500 border border-white rounded cursor-e-resize shadow-sm hover:bg-teal-600 transition-colors"
             onMouseDown={(e) => handleResize('right', e)}
           />
  

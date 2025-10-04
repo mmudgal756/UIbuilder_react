@@ -48,8 +48,8 @@ export const ChartLib: React.FC<ChartLibProps> = ({ type, data, title, xAxisLabe
       {
         label: title || '',
         data: values,
-        backgroundColor: 'rgba(99, 102, 241, 0.7)',
-        borderColor: 'rgba(99, 102, 241, 1)',
+        backgroundColor: '#0d9488',
+        borderColor: 'oklch(95.3% 0.051 180.801)',
         borderWidth: 2,
       },
     ],

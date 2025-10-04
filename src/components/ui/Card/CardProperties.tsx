@@ -23,7 +23,7 @@ export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value,
       type="text"
       value={value.title || ''}
       onChange={(e) => onChange({ ...value, title: e.target.value })}
-      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
     />
   </label>
 
@@ -34,7 +34,7 @@ export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value,
       type="text"
       value={value.subtitle || ''}
       onChange={(e) => onChange({ ...value, subtitle: e.target.value })}
-      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
     /> */}
 
 
@@ -52,7 +52,7 @@ export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value,
       type="checkbox"
       checked={value.hoverable}
       onChange={(e) => onChange({ ...value, hoverable: e.target.checked })}
-      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
     />
     <span className="text-sm text-gray-700">Hoverable</span>
   </label>
@@ -63,7 +63,7 @@ export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value,
       type="checkbox"
       checked={value.outlined}
       onChange={(e) => onChange({ ...value, outlined: e.target.checked })}
-      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+      className="h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
     />
     <span className="text-sm text-gray-700">Outlined</span>
   </label>
