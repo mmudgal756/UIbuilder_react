@@ -21,8 +21,8 @@ export const LeftPanel: React.FC = () => {
   const tabs = [
     { id: 'components', label: 'Components', icon: Layers, show: true },
     { id: 'pages', label: 'Pages', icon: FileText, show: true },
-    { id: 'queries', label: 'Queries', icon: Database, show: true },
     { id: 'apis', label: 'APIs', icon: Globe, show: true },
+    { id: 'queries', label: 'Queries', icon: Database, show: true },
     { id: 'layers', label: 'Layers', icon: Layers, show: true },
   ] as const;
 

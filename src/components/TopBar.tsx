@@ -7,16 +7,25 @@ interface TopBarProps {
 }
 
 export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
-  const { activeTab, setActiveTab, pages, currentPageId } = useAppStore();
+  const { activeTab, setActiveTab, setLeftPanelTab, pages, currentPageId } = useAppStore();
   const currentPage = pages.find(p => p.id === currentPageId);
 
   const tabs = [
-    { id: 'canvas', label: 'Canvas', icon: Grid },
-    { id: 'api', label: 'APIs', icon: Globe },
-    { id: 'sql', label: 'Queries', icon: Database },
-    { id: 'datasources', label: 'Datasources', icon: Database },
-    { id: 'code', label: 'Code', icon: FileCode },
+    { id: 'canvas', label: 'Canvas', icon: Grid, leftPanel: null },
+    { id: 'api', label: 'APIs', icon: Globe, leftPanel: 'apis' },
+    { id: 'sql', label: 'Queries', icon: Database, leftPanel: 'queries' },
+    { id: 'datasources', label: 'Datasources', icon: Database, leftPanel: null },
+    { id: 'code', label: 'Code', icon: FileCode, leftPanel: null },
   ] as const;
+
+  const handleTabClick = (tabId: typeof tabs[number]['id'], leftPanelId: string | null) => {
+    setActiveTab(tabId);
+    
+    // Sync LeftPanel tab when clicking TopBar tabs
+    if (leftPanelId) {
+      setLeftPanelTab(leftPanelId as 'components' | 'pages' | 'queries' | 'apis' | 'layers');
+    }
+  };
 
   return (
     <div className="h-14 bg-gray-800 border-b border-gray-700 flex items-center justify-between px-4">
@@ -33,7 +42,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabClick(tab.id, tab.leftPanel)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                   activeTab === tab.id
                     ? 'bg-blue-600 text-white shadow-sm'
@@ -85,8 +94,6 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
             Deploy
           </button>
         </div>
-
-        
       </div>
     </div>
   );
