@@ -15,7 +15,7 @@ export const CardPropertiesPanel: React.FC<CardPropertiesPanelProps> = ({ value,
   };
 
   return (
-   <div className="space-y-4 p-4 bg-white rounded-lg shadow">
+   <div className="space-y-4 rounded-lg shadow">
   {/* Title */}
   <label className="block">
     <span className="block text-sm font-medium text-gray-700 mb-1">Title</span>

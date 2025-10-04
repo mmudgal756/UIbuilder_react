@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, Save, Download, Upload, Grid2x2 as Grid, Settings, Share2, Eye, Code, Database, FileCode, Globe } from 'lucide-react';
+import { Download, Upload, Grid2x2 as Grid, Share2, Eye, Database, FileCode, Globe } from 'lucide-react';
 import { useAppStore } from '../store/useAppStore';
 
 interface TopBarProps {
@@ -60,10 +60,6 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
         {/* Action Buttons */}
         <div className="flex items-center gap-2">
           <button className="px-3 py-1.5 text-sm bg-gray-700 hover:bg-gray-600 rounded-md transition-colors flex items-center gap-1.5">
-            <Save className="w-4 h-4" />
-            Save
-          </button>
-          <button className="px-3 py-1.5 text-sm bg-gray-700 hover:bg-gray-600 rounded-md transition-colors flex items-center gap-1.5">
             <Upload className="w-4 h-4" />
             Import
           </button>
@@ -90,10 +86,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onPreview }) => {
           </button>
         </div>
 
-        {/* Settings */}
-        <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-md transition-colors">
-          <Settings className="w-5 h-5" />
-        </button>
+        
       </div>
     </div>
   );
